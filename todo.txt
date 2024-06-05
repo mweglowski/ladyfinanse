@@ -1,0 +1,13 @@
+CURRENT
+filter posts
+likes and comments counts in posts
+
+LATER
+fix bug with categories not setting up
+webscraping deslux realestates page
+realestates route
+place images - landing page
+change video
+add icons to contact section sections
+
+COLOR = #C7AE48

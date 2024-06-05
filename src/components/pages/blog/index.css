@@ -1,0 +1,7 @@
+input, select, option {
+	@apply rounded-lg border-2 border-gray-200 py-1 px-2 min-w-[150px] outline-none hover:border-gray-400 focus:border-gray-400 duration-300 h-[40px] text-gray-400 cursor-pointer hover:text-gray-500 focus:text-gray-500;
+}
+
+option {
+	@apply text-gray-500;
+}
