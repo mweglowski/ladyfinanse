@@ -11,9 +11,10 @@ const RealEstatesPage = () => {
     const fetchData = async () => {
       try {
         // Determine the base URL based on the environment
-        const baseURL = process.env.NODE_ENV === "development" 
-          ? "http://localhost:5000" 
-          : "https://webscraper-api.vercel.app";
+        const baseURL =
+          process.env.NODE_ENV === "development"
+            ? "http://localhost:5000"
+            : "https://webscraper-api.vercel.app";
 
         const response = await fetch(`${baseURL}/`);
 
@@ -49,7 +50,11 @@ const RealEstatesPage = () => {
       </div>
 
       {/* FILTERS */}
-
+      <img
+        src="http://deslux.pl/wp-content/uploads/2023/03/IMG-20220331-WA0007-500x380.jpg"
+        alt="Specific Real Estate Image"
+        className="rounded-lg border-2 border-gray-200"
+      />
       {/* REAL ESTATES LIST */}
       {loading ? (
         "Loading..."
