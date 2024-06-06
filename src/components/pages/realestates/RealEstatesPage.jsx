@@ -13,6 +13,7 @@ const RealEstatesPage = () => {
       console.log('fetching')
       try {
         const response = await fetch(`https://webscraper-api.vercel.app`);
+        // const response = await fetch(`http://localhost:5000`)
 
         const message = await response.json();
         console.log(message)
@@ -43,11 +44,8 @@ const RealEstatesPage = () => {
       </div>
 
       {/* FILTERS */}
-      <img
-        src="http://deslux.pl/wp-content/uploads/2023/03/IMG-20220331-WA0007-500x380.jpg"
-        alt="Specific Real Estate Image"
-        className="rounded-lg border-2 border-gray-200"
-      />
+
+    
       {/* REAL ESTATES LIST */}
       {loading ? (
         "Loading..."
