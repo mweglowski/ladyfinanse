@@ -7,22 +7,15 @@ const RealEstatesPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     const fetchData = async () => {
+      console.log('fetching')
       try {
-        // Determine the base URL based on the environment
-        const baseURL =
-          process.env.NODE_ENV === "development"
-            ? "http://localhost:5000"
-            : "https://webscraper-api.vercel.app";
-
-        const response = await fetch(`${baseURL}/`);
-
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
+        const response = await fetch(`https://webscraper-api.vercel.app`);
 
         const message = await response.json();
+        console.log(message)
         setData(message.data);
         console.log(message.data);
       } catch (error) {
@@ -63,22 +56,23 @@ const RealEstatesPage = () => {
       ) : (
         <div className="flex flex-wrap justify-center gap-4 max-w-[1000px] mx-auto">
           {data.map((offerData, index) => {
-            const { imageSrc, title, link } = offerData;
+            // const { imageSrc, title, link } = offerData;
+            const { imageSrc } = offerData;
 
             return (
               <a
                 key={index}
                 className="border-2 border-gray-200 rounded-lg max-w-[320px] p-2"
-                href={link}
+                // href={link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img
                   src={imageSrc}
-                  alt={title}
+                  alt={"Real Estate Image"}
                   className="rounded-lg border-2 border-gray-200"
                 />
-                <div className="mt-2">{title}</div>
+                <div className="mt-2">{"Some default text"}</div>
               </a>
             );
           })}
