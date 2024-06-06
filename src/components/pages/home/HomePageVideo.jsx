@@ -40,18 +40,18 @@ const HomePageVideo = () => {
         Your browser does not support the video tag.
       </video>
       <div className="video-mask absolute top-0 left-0 w-full h-full"></div>
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center">
-        <div className="relative animate-pulse w-[300px] h-[300px] ">
-          <img
-            src={CompanyLogo}
-            alt="Company Logo"
-            className="mb-4 "
-          />
+
+      {/* LOGO WITH FEATURES */}
+      <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center bg-[#000000aa]">
+        <div className="relative w-[370px] h-[370px]">
+          <img src={CompanyLogo} alt="Company Logo" className="mb-4" />
           <Title classNames="absolute bottom-[-15px] text-[#C7AE48] w-full">
             LadyFinanse
           </Title>
         </div>
-        <CompanyFeatureText text={texts[currentTextIndex]} />
+        <div className="absolute bottom-[140px]">
+          <CompanyFeatureText text={texts[currentTextIndex]} />
+        </div>
       </div>
     </div>
   );

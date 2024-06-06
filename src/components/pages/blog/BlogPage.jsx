@@ -6,7 +6,6 @@ import BlogImage from "../../../images/blog/blog.png";
 import Title from "../../UI/Title";
 import { Link } from "react-router-dom";
 import Section from "../../UI/Section";
-import PostCard from "./PostCard";
 import "./index.css";
 import PostsList from "./PostsList";
 import Filters from "./Filters";
@@ -22,20 +21,6 @@ const BlogPage = () => {
   const [sortOption, setSortOption] = useState("date_desc");
 
   useEffect(() => {
-    // GETTING ALL CATEGORIES TO LIST THEM IN FILTER OPTIONS
-    const setUpCategories = () => {
-      const uniqueCategories = [];
-      posts.map((post) => {
-        post.categories.forEach((category) => {
-          if (uniqueCategories.indexOf(category) == -1) {
-            uniqueCategories.push(category);
-          }
-        });
-      });
-
-      setAvailableCategories(uniqueCategories);
-    };
-
     // FETCHING POSTS
     const fetchPosts = async () => {
       try {
@@ -45,10 +30,7 @@ const BlogPage = () => {
           id: post.id,
           ...post.data(),
         }));
-
-        // ADDING CATEGORIES TO FILTER
-        setUpCategories(postsData);
-
+        
         // ADDING POSTS
         setPosts(postsData);
       } catch (error) {
@@ -58,6 +40,25 @@ const BlogPage = () => {
 
     fetchPosts();
   }, []);
+
+  useEffect(() => {
+    // GETTING ALL CATEGORIES TO LIST THEM IN FILTER OPTIONS
+    const setUpCategories = (posts) => {
+      const uniqueCategories = [];
+      posts.map((post) => {
+        post.categories.forEach((category) => {
+          if (uniqueCategories.indexOf(category) == -1) {
+            uniqueCategories.push(category);
+          }
+        });
+      });
+
+      // ADDING CATEGORIES TO FILTER
+      setAvailableCategories(uniqueCategories);
+    };
+
+    setUpCategories(posts);
+  }, [posts])
 
   // FILTERING BASED ON SELECTED FILTERS
   const handleFilter = () => {
@@ -128,6 +129,7 @@ const BlogPage = () => {
           src={BlogImage}
           alt="Blog Image"
           className="mt-[50px] max-w-[700px] w-full"
+          loading="lazy"
         />
         <Title classNames="absolute top-[50%] text-shadow-white max-w-[350px] sm:text-[60px]">
           Witaj na naszym blogu!
