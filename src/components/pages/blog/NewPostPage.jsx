@@ -54,6 +54,7 @@ const NewPostPage = () => {
         categories,
         createdAt: new Date(),
         comments: [],
+        likes: [],
       });
       navigate("/blog");
     } catch (error) {

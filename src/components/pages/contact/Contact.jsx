@@ -23,6 +23,7 @@ const Contact = () => {
         <a
           className="font-bold mx-auto bg-black text-white rounded-lg px-[16px] text-[27px] flex items-center duration-300 hover:bg-white hover:text-black shadow-sm shadow-black border-2 border-black  cursor-poiner"
           href="https://www.facebook.com/profile.php?id=61560185744127"
+          target="_blank"
         >
           f
         </a>
