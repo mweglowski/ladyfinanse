@@ -42,10 +42,10 @@ const HomePageVideo = () => {
       <div className="video-mask absolute top-0 left-0 w-full h-full"></div>
 
       {/* LOGO WITH FEATURES */}
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center bg-[#000000aa]">
-        <div className="relative w-[370px] h-[370px]">
+      <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center text-center bg-[#000000aa]">
+        <div className="relative w-[370px] h-[370px] top-[160px]">
           <img src={CompanyLogo} alt="Company Logo" className="mb-4" />
-          <Title classNames="absolute bottom-[-15px] text-[#C7AE48] w-full">
+          <Title classNames="absolute bottom-[-15px] text-[#C7AE48] w-full italic-title">
             LadyFinanse
           </Title>
         </div>

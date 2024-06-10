@@ -16,7 +16,7 @@
 }
 
 /* GLOBAL REUSABLE ANIMATIONS AND CLASSES */
-.title {
+.italic-title {
   font-family: "Parisienne";
 }
 
@@ -179,3 +179,41 @@ video {
 .comment-modal-shadow {
   box-shadow: 0 0 .6em gray;
 }
+
+/* SLIDER */
+
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  height: 150px;
+  position: relative;
+  margin-top: 70px;
+  margin-bottom: 200px;
+  width: 100%;
+  box-shadow: 0 0 1em 1.5em white inset;
+}
+
+.slider {
+  position: absolute;
+  width: 10000px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  animation: slide 160s linear infinite;
+  z-index: -1;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+

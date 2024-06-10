@@ -32,13 +32,18 @@ const RealEstatesPage = () => {
   return (
     <Section classNames="p-4">
       {/* TITLE WITH IMAGE */}
-      <div className="relative mx-auto">
+      {/* <div className="relative mx-auto">
         <img
           src={RealEstatesImage}
           alt="Real Estates Image"
           className="mt-[50px] max-w-[700px] w-full"
         />
         <Title classNames="absolute top-[60%] left-[15%] text-shadow-white max-w-[350px] sm:text-[60px]">
+          Nieruchomości
+        </Title>
+      </div> */}
+      <div className="relative mx-auto">
+        <Title classNames="text-shadow-white sm:text-[60px] mt-[100px]">
           Nieruchomości
         </Title>
       </div>

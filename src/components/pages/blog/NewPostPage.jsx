@@ -12,19 +12,25 @@ const NewPostPage = () => {
   const [sections, setSections] = useState([]);
   const [newSectionType, setNewSectionType] = useState("title");
   const [newSectionContent, setNewSectionContent] = useState("");
+  const [newSectionImage, setNewSectionImage] = useState(null);
   const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState("");
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const navigate = useNavigate();
 
   const handleAddSection = () => {
-    if (newSectionContent === "") return;
+    if (newSectionContent === "" && !newSectionImage) return;
 
     setSections([
       ...sections,
-      { type: newSectionType, content: newSectionContent },
+      {
+        type: newSectionType,
+        content: newSectionContent,
+        image: newSectionImage,
+      },
     ]);
     setNewSectionContent("");
+    setNewSectionImage(null);
   };
 
   const handleRemoveSection = (index) => {
@@ -60,6 +66,25 @@ const NewPostPage = () => {
     } catch (error) {
       console.error("Error adding document: ", error);
     }
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setNewSectionImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleBoldText = () => {
+    setNewSectionContent(`${newSectionContent} <b></b>`);
+  };
+
+  const handleAlignText = (alignment) => {
+    setNewSectionContent(`<div style="text-align: ${alignment};">${newSectionContent}</div>`);
   };
 
   return (
@@ -108,7 +133,12 @@ const NewPostPage = () => {
                 {section.type === "subtitle" && (
                   <h2 className="text-xl font-semibold">{section.content}</h2>
                 )}
-                {section.type === "text" && <p>{section.content}</p>}
+                {section.type === "text" && (
+                  <div dangerouslySetInnerHTML={{ __html: section.content }} />
+                )}
+                {section.type === "image" && (
+                  <img src={section.image} alt="Uploaded" className="max-w-full h-auto" />
+                )}
               </div>
               {hoveredIndex === index && (
                 <button
@@ -151,15 +181,68 @@ const NewPostPage = () => {
             >
               Tekst
             </button>
+            <button
+              type="button"
+              className={`border-2 p-1 px-3 border-black rounded-lg ${
+                newSectionType === "image"
+                  ? "bg-black text-[#C7AE48] border-[#C7AE48]"
+                  : ""
+              }`}
+              onClick={() => setNewSectionType("image")}
+            >
+              Zdjęcie
+            </button>
           </div>
 
-          <textarea
-            type="text"
-            value={newSectionContent}
-            onChange={(e) => setNewSectionContent(e.target.value)}
-            placeholder="Treść elementu"
-            className="input mt-4 min-h-[100px] max-h-[200px]"
-          />
+          {newSectionType === "text" && (
+            <div className="flex gap-2 mx-auto mt-4">
+              <button
+                type="button"
+                onClick={handleBoldText}
+                className="border-2 p-1 px-3 border-black rounded-lg"
+              >
+                Pogrubienie
+              </button>
+              <button
+                type="button"
+                onClick={() => handleAlignText("left")}
+                className="border-2 p-1 px-3 border-black rounded-lg"
+              >
+                Lewo
+              </button>
+              <button
+                type="button"
+                onClick={() => handleAlignText("center")}
+                className="border-2 p-1 px-3 border-black rounded-lg"
+              >
+                Centrum
+              </button>
+              <button
+                type="button"
+                onClick={() => handleAlignText("right")}
+                className="border-2 p-1 px-3 border-black rounded-lg"
+              >
+                Prawo
+              </button>
+            </div>
+          )}
+
+          {newSectionType === "image" ? (
+            <input
+              type="file"
+              onChange={handleImageUpload}
+              className="input mt-4"
+              accept="image/*"
+            />
+          ) : (
+            <textarea
+              type="text"
+              value={newSectionContent}
+              onChange={(e) => setNewSectionContent(e.target.value)}
+              placeholder="Treść elementu"
+              className="input mt-4 min-h-[100px] max-h-[200px]"
+            />
+          )}
 
           <button
             type="button"

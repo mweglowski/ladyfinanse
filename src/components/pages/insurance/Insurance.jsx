@@ -3,13 +3,21 @@ import Title from "../../UI/Title";
 import Section from "../../UI/Section";
 import Description from "../../UI/Description";
 import InsuranceTypeCard from "./InsuranceTypeCard";
+import Slider from "../../UI/Slider";
 
-import Link4Logo from "../../../images/link4.png";
-import GeneraliLogo from "../../../images/generali.png";
-import PZULogo from "../../../images/pzu.png";
-import ErgoHestiaLogo from "../../../images/ergohestia.png";
-import WartaLogo from "../../../images/warta.png";
-import ProamaLogo from "../../../images/proama.png";
+import Link4Logo from "../../../images/insurance/link4.png";
+import GeneraliLogo from "../../../images/insurance/generali.png";
+import PZULogo from "../../../images/insurance/pzu.png";
+import ErgoHestiaLogo from "../../../images/insurance/ergohestia.png";
+import WartaLogo from "../../../images/insurance/warta.png";
+import ProamaLogo from "../../../images/insurance/proama.png";
+import ConcordiaLogo from "../../../images/insurance/concordia.png";
+import NationaleLogo from "../../../images/insurance/nationale.png";
+import ViennaLogo from "../../../images/insurance/vienna.png";
+import PrudentialLogo from "../../../images/insurance/prudential.png";
+import UniquaLogo from "../../../images/insurance/uniqua.png";
+import InterRiskLogo from "../../../images/insurance/interrisk.png";
+import WienerLogo from "../../../images/insurance/wiener.png";
 
 import HouseIcon from "../../../icons/house-dark.svg";
 import CarIcon from "../../../icons/car-dark.svg";
@@ -68,15 +76,36 @@ const Insurance = () => {
     },
   ];
 
+  const logos = [
+    Link4Logo,
+    GeneraliLogo,
+    PZULogo,
+    ErgoHestiaLogo,
+    WartaLogo,
+    ProamaLogo,
+    ConcordiaLogo,
+    NationaleLogo,
+    ViennaLogo,
+    PrudentialLogo,
+    UniquaLogo,
+    WienerLogo,
+    InterRiskLogo
+  ];
+
   return (
     <Section classNames="pt-[50px]">
-      <div className="relative mx-auto">
+      {/* <div className="relative mx-auto">
         <img
           src={InsuranceTypes}
           alt="Blog Image"
           className="mt-[50px] max-w-[550px] w-full"
         />
         <Title classNames="absolute top-[70%] left-[0%] text-shadow-white max-w-[350px] sm:text-[60px] sm:left-[10%] md:max-w-[450px] md:top-[75%]">
+          Co możesz z nami ubezpieczyć?
+        </Title>
+      </div> */}
+      <div className="relative mx-auto mt-[50px]">
+        <Title classNames="text-shadow-white max-w-[350px] sm:text-[60px] sm:left-[10%] md:max-w-[450px] md:top-[75%]">
           Co możesz z nami ubezpieczyć?
         </Title>
       </div>
@@ -91,7 +120,7 @@ const Insurance = () => {
         ))}
       </ul>
 
-      <div className="relative mx-auto">
+      {/* <div className="relative mx-auto">
         <img
           src={InsuranceCompanies}
           alt="Blog Image"
@@ -100,13 +129,18 @@ const Insurance = () => {
         <Title classNames="absolute top-[65%] left-[5%] text-[45px] text-shadow-white max-w-[350px] sm:text-[60px] sm:max-w-[450px] sm:top-[70%]">
           Współpraca z Towarzystwami Ubezpieczeniowymi
         </Title>
+      </div> */}
+      <div className="relative mx-auto">
+        <Title classNames="text-[35px] text-shadow-white sm:text-[60px]">
+          Współpraca z Towarzystwami Ubezpieczeniowymi
+        </Title>
       </div>
 
-      <Description classNames="mt-[100px] mb-[70px]">
+      {/* <Description classNames="mt-[100px] mb-[70px]">
         Poniżej przedstawiamy listę Towarzystw Ubezpieczeniowych, z którymi
         współpracujemy.
-      </Description>
-      <ul className="flex flex-wrap p-[50px] gap-[80px] justify-center items-center max-w-[1250px] mx-auto animate-slide-down mb-[100px]">
+      </Description> */}
+      {/* <ul className="flex flex-wrap p-[50px] gap-[80px] justify-center items-center max-w-[1250px] mx-auto animate-slide-down mb-[100px]">
         <li>
           <ImageCard logo={Link4Logo} />
         </li>
@@ -125,7 +159,8 @@ const Insurance = () => {
         <li>
           <ImageCard logo={ProamaLogo} />
         </li>
-      </ul>
+      </ul> */}
+      <Slider logos={logos} classNames={"max-w-[900px] mx-auto"}/>
     </Section>
   );
 };

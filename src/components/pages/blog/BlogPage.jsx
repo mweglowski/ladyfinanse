@@ -124,7 +124,7 @@ const BlogPage = () => {
   return (
     <Section classNames="mb-[100px] p-4">
       {/* IMAGE WITH TITLE */}
-      <div className="relative mx-auto">
+      {/* <div className="relative mx-auto">
         <img
           src={BlogImage}
           alt="Blog Image"
@@ -132,6 +132,11 @@ const BlogPage = () => {
           loading="lazy"
         />
         <Title classNames="absolute top-[50%] text-shadow-white max-w-[350px] sm:text-[60px]">
+          Witaj na naszym blogu!
+        </Title>
+      </div> */}
+      <div className="relative mx-auto">
+        <Title classNames="text-shadow-white sm:text-[60px] mt-[100px]">
           Witaj na naszym blogu!
         </Title>
       </div>

@@ -7,13 +7,18 @@ const Contact = () => {
   return (
     <Section classNames={"p-8"}>
       {/* IMAGE WITH TITLE */}
-      <div className="relative mx-auto">
+      {/* <div className="relative mx-auto">
         <img
           src={ContactImage}
           alt="Blog Image"
           className="mt-[50px] max-w-[800px] w-full"
         />
         <Title classNames="absolute top-[50%] left-[35%] text-shadow-white max-w-[350px] sm:text-[60px]">
+          Kontakt
+        </Title>
+      </div> */}
+      <div className="relative mx-auto">
+        <Title classNames="text-shadow-white sm:text-[60px] mt-[100px]">
           Kontakt
         </Title>
       </div>
@@ -30,6 +35,7 @@ const Contact = () => {
         <a
           className="button rounded-lg cursor-pointer"
           href="https://docs.google.com/forms/d/e/1FAIpQLSdLZNN0iXmXa1f7jYmj1f_s6nK2VQl_NkKrtxMM57RbSV8kCA/viewform"
+          target="_blank"
         >
           Formularz kontaktowy
         </a>
@@ -45,12 +51,12 @@ const Contact = () => {
 
         <div className="px-8 py-5 flex items-center justify-between shadow-md border-2 border-slate-200 w-full rounded-lg">
           <div className="font-bold text-lg">Telefon</div>
-          <p>+48 568 589 685</p>
+          <p>+48 530 235 204</p>
         </div>
 
         <div className="px-8 py-5 flex items-center justify-between shadow-md border-2 border-slate-200 w-full rounded-lg">
           <div className="font-bold text-lg">Email</div>
-          <p>sample.email@gmail.com</p>
+          <p>biuro@ladyfinanse.pl</p>
         </div>
 
         <div className="px-8 py-5 flex items-center shadow-md border-2 border-slate-200 w-full flex-col rounded-lg">
@@ -68,9 +74,13 @@ const Contact = () => {
             ]).map((day) => (
               <li key={day} className="flex gap-[40px] justify-between">
                 <div>{day}</div>
-                <div>8:00 - 18:00</div>
+                <div>9:00 - {day === "Środa" || day === "Czwartek" ? "18:00" : "17:00"}</div>
               </li>
             ))}
+            <li className="flex gap-[40px] justify-between">
+              <div>Sobota</div>
+              <div>Nieczynne</div>
+            </li>
             <li className="flex gap-[40px] justify-between">
               <div>Niedziela</div>
               <div>Nieczynne</div>

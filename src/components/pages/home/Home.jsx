@@ -3,6 +3,7 @@ import HomePageVideo from "./HomePageVideo";
 import EmployeeImageCard from "./EmployeeImageCard";
 import Title from "../../UI/Title";
 import Description from "../../UI/Description";
+import CompanyLogo from "../../../icons/logo.png";
 
 function Home() {
   return (
@@ -11,39 +12,39 @@ function Home() {
       <HomePageVideo />
 
       {/* GENERAL INFO ABOUT LADY TEAM */}
-      <Title classNames={"mt-[150px]"}>LadyTeam</Title>
+      <Title classNames={"mt-[150px]"}>Poznajcie nas!</Title>
       <Description>
-        Jesteśmy <strong>profesjonalną</strong> firmą specjalizującą się w{" "}
-        <strong>kompleksowej obsłudze finansowej</strong>. Oferujemy szeroki
-        zakres usług z zakresu nieruchomości, ubezpieczeń, pożyczek i kredytów,
-        dostosowanych do indywidualnych potrzeb klienta. Naszym celem jest
-        zapewnienie Ci <strong>spokoju</strong> i
-        <strong> bezpieczeństwa finansowego</strong>, dlatego dbamy o każdy
-        szczegół naszej współpracy. Poznaj nas bliżej i przekonaj się, dlaczego{" "}
-        <strong>warto</strong> nam zaufać.
+        Jesteśmy zespołem doświadczonych Ekspertek, które od lat działają w tych
+        branżach. Postanowiłyśmy połączyć nasze siły, aby stworzyć Nową Markę,
+        która zapewni Wam rzetelne informacje oraz fachowe porady. Oferujemy
+        szeroki zakres usług z zakresu kredytów, ubezpieczeń oraz nieruchomości
+        dostosowanych do indywidualnych potrzeb klienta. Naszą misją jest
+        wspieranie Was w podejmowaniu świadomych decyzji finansowych!
       </Description>
 
       {/* EMPLOYEES IMAGES */}
       <Title classNames={"mt-[150px]"}>Nasza Drużyna</Title>
       <div className="flex flex-wrap justify-center gap-[20px] p-8">
-        <EmployeeImageCard />
-        <EmployeeImageCard />
-        <EmployeeImageCard />
-        <EmployeeImageCard />
+        <EmployeeImageCard name={"Dorota Szczepańska"} />
+        <EmployeeImageCard name={"Natalia Zasadzińska"} />
+        <EmployeeImageCard name={"Julia Waśkiewicz"} />
+        <EmployeeImageCard name={"Agnieszka Kalkowska"} />
+        <EmployeeImageCard name={"Paulina Majerkiewicz"} />
       </div>
 
       {/* ADDITIONAL INFO SECTION */}
       <div className="relative w-full bg-[#1a1a1a] text-slate-300 bg-pattern mt-[200px] pb-[150px]">
-        <Title classNames={"mt-[150px]"}>Jesteś w dobrych rękach</Title>
-        <Description>
-          W firmie <strong>LadyFinanse</strong> staramy się pomóc naszym
-          klientom w poprawie ich zdolności kredytowej. Jakkolwiek skomplikowana
-          jest Twoja sytuacja finansowa, możesz być pewien, że razem{" "}
-          <strong>znajdziemy rozwiązanie</strong>. Od 2000 roku nasz
-          zaangażowany zespół ekspertów dokłada wszelkich starań, aby pomóc
-          naszym klientom. Jesteśmy <strong>profesjonalni</strong> i{" "}
-          <strong>dyskretni</strong>, więc nie obawiaj się zwrócić do nas po
-          pomoc.
+        <img
+          src={CompanyLogo}
+          alt="Company Logo"
+          className="mx-auto max-w-[360px] mt-[50px]"
+        />
+        <Description classNames={"text-[#e3d391]"}>
+          Jako LadyFinanse chcemy być Waszym zaufanym partnerem w finansach.
+          Nasz zespół jest gotowy, aby służyć Wam pomocą i profesjonalnym
+          doradztwem. Nasza marka wyróżnia się{" "}
+          <strong>kompleksowym podejściem do obsługi klienta</strong>, gdzie
+          każde Wasze potrzeby są dla nas priorytetem.
         </Description>
       </div>
     </div>

@@ -1,12 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import MBankLogo from "../../../images/mbank.jpg";
-import SantanderLogo from "../../../images/santander.jpg";
-import IngLogo from "../../../images/ing.jpg";
-import PkoBpLogo from "../../../images/pkobp.jpg";
-import BnpParibasLogo from "../../../images/bnpparibas.png";
-import PekaoLogo from "../../../images/pekao.jpg";
+import MBankLogo from "../../../images/banks/mbank.png";
+import SantanderLogo from "../../../images/banks/santander.jpg";
+import IngLogo from "../../../images/banks/ing.jpg";
+import PkoBpLogo from "../../../images/banks/pkobp.jpg";
+import BnpParibasLogo from "../../../images/banks/bnpparibas.png";
+import PekaoLogo from "../../../images/banks/pekao.jpg";
+import AliorBankLogo from "../../../images/banks/alior.png";
+import WschowaLogo from "../../../images/banks/wschowa.jpg";
+import BosLogo from "../../../images/banks/bos.jpg";
+import CitiLogo from "../../../images/banks/citi.png";
+import MilleniumLogo from "../../../images/banks/millenium.png";
+import SBRLogo from "../../../images/banks/sbr.png";
+import VeloLogo from "../../../images/banks/velo.jpg";
 
 import HouseIcon from "../../../icons/house.svg";
 import TVIcon from "../../../icons/tv.svg";
@@ -23,6 +30,7 @@ import Section from "../../UI/Section";
 
 import BankImage from "../../../images/bank.png";
 import RoadToBetterLoanImage from "../../../images/road-to-better-loan.png";
+import Slider from "../../UI/Slider";
 
 const Loans = () => {
   const loansData = [
@@ -30,14 +38,14 @@ const Loans = () => {
       id: 0,
       title: "Kredyt Hipoteczny",
       description:
-        "Pozwala na sfinansowanie zakupu nieruchomości, takiej jak mieszkanie, dom lub działka budowlana. Oprocentowanie jest zazwyczaj niższe niż w przypadku innych kredytów, a okres spłaty może wynosić nawet kilkadziesiąt lat. Aby uzyskać kredyt hipoteczny, konieczne jest posiadanie wkładu własnego oraz zdolności kredytowej.",
+        "Pozwala na sfinansowanie zakupu nieruchomości, takiej jak mieszkanie, dom lub działka budowlana. Oprocentowanie jest zazwyczaj niższe niż w przypadku innych kredytów, a okres spłaty może wynosić nawet kilkadziesiąt lat.",
       icon: HouseIcon,
     },
     {
       id: 1,
       title: "Kredyt konsumpcyjny",
       description:
-        "To rozwiązanie dla osób potrzebujących dodatkowych środków na bieżące wydatki, takie jak zakup sprzętu AGD, remont mieszkania czy wakacje. Cechuje się prostymi procedurami uzyskania oraz krótszym okresem spłaty w porównaniu do kredytu hipotecznego. Oprocentowanie może być zmienne lub stałe, w zależności od oferty banku.",
+        "To rozwiązanie dla osób potrzebujących dodatkowych środków na bieżące wydatki, takie jak zakup sprzętu AGD, remont mieszkania czy wakacje. Cechuje się prostymi procedurami uzyskania oraz krótszym okresem spłaty w porównaniu do kredytu hipotecznego.",
       icon: TVIcon,
     },
     {
@@ -70,45 +78,25 @@ const Loans = () => {
     },
   ];
 
+  const logos = [
+    MBankLogo,
+    PekaoLogo,
+    BnpParibasLogo,
+    PkoBpLogo,
+    SantanderLogo,
+    AliorBankLogo,
+    WschowaLogo,
+    BosLogo,
+    CitiLogo,
+    IngLogo,
+    MilleniumLogo,
+    VeloLogo,
+    SBRLogo,
+  ];
+
   return (
     <Section>
-      {/* IMAGE WITH TITLE */}
-      <div className="relative mx-auto">
-        <img
-          src={BankImage}
-          alt="Blog Image"
-          className="mt-[100px] max-w-[800px] w-full"
-        />
-        <Title classNames="absolute top-[50%] left-[30%] text-shadow-white max-w-[350px] sm:text-[60px]">
-          Współpraca z Bankami
-        </Title>
-      </div>
-      <Description>
-        Poniżej przedstawiamy banki, z którymi współpracujemy.
-      </Description>
-
-      <ul className="flex flex-wrap justify-center items-center gap-[60px] mt-[70px] max-w-[800px] mx-auto p-8 pb-[100px] animate-slide-down ">
-        <li>
-          <ImageCard logo={MBankLogo} />
-        </li>
-        <li>
-          <ImageCard logo={SantanderLogo} />
-        </li>
-        <li>
-          <ImageCard logo={IngLogo} />
-        </li>
-        <li>
-          <ImageCard logo={PekaoLogo} />
-        </li>
-        <li>
-          <ImageCard logo={BnpParibasLogo} />
-        </li>
-        <li className="pb-2">
-          <ImageCard logo={PkoBpLogo} />
-        </li>
-      </ul>
-
-      <div className="bg-pattern mt-[100px] text-white">
+      <div className="bg-pattern text-white">
         <Title classNames="mt-[200px]">O jaki kredyt możesz się starać?</Title>
         <ul className="flex flex-wrap justify-center items-center gap-[60px] mt-[70px] mx-auto p-8 pb-[200px]">
           {loansData.map((loanData) => (
@@ -119,13 +107,18 @@ const Loans = () => {
         </ul>
       </div>
 
-      <div className="relative mx-auto mt-[100px]">
+      {/* <div className="relative mx-auto mt-[100px]">
         <img
           src={RoadToBetterLoanImage}
           alt="Blog Image"
           className="mt-[50px] max-w-[700px] w-full"
         />
         <Title classNames="absolute top-[50%] left-[30%] text-shadow-white max-w-[350px] sm:text-[60px]">
+          Droga do lepszego kredytu
+        </Title>
+      </div> */}
+      <div className="relative mx-auto mt-[100px]">
+        <Title classNames="text-shadow-white max-w-[600px]   sm:text-[60px]">
           Droga do lepszego kredytu
         </Title>
       </div>
@@ -147,6 +140,68 @@ const Loans = () => {
         </Link>{" "}
         z nami, aby dowiedzieć się więcej.
       </Description>
+
+      {/* IMAGE WITH TITLE */}
+      <div className="relative mx-auto">
+        {/* <img
+          src={BankImage}
+          alt="Blog Image"
+          className="mt-[100px] max-w-[800px] w-full"
+        /> */}
+        {/* <Title classNames="absolute top-[50%] left-[30%] text-shadow-white max-w-[350px] sm:text-[60px]">
+          Współpraca z Bankami
+        </Title> */}
+        <Title classNames="text-shadow-white max-w-[700px] sm:text-[60px] mt-[100px]">
+          Współpraca z Bankami
+        </Title>
+      </div>
+      {/* <Description>
+        Poniżej przedstawiamy banki, z którymi współpracujemy.
+      </Description> */}
+
+      {/* <ul className="flex flex-wrap justify-center items-center mt-[70px] max-w-[800px] mx-auto p-8 pb-[100px] animate-slide-down gap-[25px] sm:gap-[60px]">
+        <li>
+          <ImageCard logo={MBankLogo} />
+        </li>
+        <li>
+          <ImageCard logo={PekaoLogo} />
+        </li>
+        <li>
+          <ImageCard logo={BnpParibasLogo} />
+        </li>
+        <li>
+          <ImageCard logo={PkoBpLogo} />
+        </li>
+        <li>
+          <ImageCard logo={SantanderLogo} />
+        </li>
+        <li className="scale-[0.9]">
+          <ImageCard logo={AliorBankLogo} />
+        </li>
+        <li>
+          <ImageCard logo={WschowaLogo} />
+        </li>
+        <li>
+          <ImageCard logo={BosLogo} />
+        </li>
+        <li>
+          <ImageCard logo={CitiLogo} />
+        </li>
+        <li>
+          <ImageCard logo={IngLogo} />
+        </li>
+        <li className="scale-[1.2]">
+          <ImageCard logo={MilleniumLogo} />
+        </li>
+        <li>
+          <ImageCard logo={VeloLogo} />
+        </li>
+        <li>
+          <ImageCard logo={SBRLogo} />
+        </li>
+      </ul> */}
+
+      <Slider logos={logos} classNames="mb-[200px] max-w-[900px] mx-auto"/>
     </Section>
   );
 };

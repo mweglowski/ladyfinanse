@@ -36,13 +36,22 @@ function App() {
           <Route path="/signup" element={<Signup />} />
         </Routes>
 
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSdLZNN0iXmXa1f7jYmj1f_s6nK2VQl_NkKrtxMM57RbSV8kCA/viewform"
-          className="fixed bottom-0 bg-blue-200 left-0 rounded-tr-lg py-2 px-3 button z-50 shadow-none hover:bg-white"
-          target="_blank"
-        >
-          Formularz kontaktowy
-        </a>
+        <div className="fixed bottom-0 left-0 z-50 flex gap-[10px]">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdLZNN0iXmXa1f7jYmj1f_s6nK2VQl_NkKrtxMM57RbSV8kCA/viewform"
+            className="rounded-tr-lg py-2 px-3 button shadow-none hover:bg-white"
+            target="_blank"
+          >
+            Formularz kontaktowy
+          </a>
+          <a
+            className="font-bold mx-auto bg-black text-white rounded-t-lg px-[16px] text-[27px] flex items-center duration-300 hover:bg-white hover:text-black shadow-sm shadow-black border-2 border-black  cursor-poiner"
+            href="https://www.facebook.com/profile.php?id=61560185744127"
+            target="_blank"
+          >
+            f
+          </a>
+        </div>
         <Footer />
       </div>
     </AuthProvider>
