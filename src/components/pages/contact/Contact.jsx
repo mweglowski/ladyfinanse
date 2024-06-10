@@ -2,6 +2,11 @@ import React from "react";
 import Title from "../../UI/Title";
 import Section from "../../UI/Section";
 import ContactImage from "../../../images/contact.png";
+import AddressIcon from "../../../icons/address.svg";
+import EmailIcon from "../../../icons/email.svg";
+import PhoneIcon from "../../../icons/phone.svg";
+import ScheduleIcon from "../../../icons/schedule.svg";
+import LocationIcon from "../../../icons/location.svg";
 
 const Contact = () => {
   return (
@@ -43,25 +48,35 @@ const Contact = () => {
 
       <div className="flex justify-center flex-wrap items-center gap-3 animate-slide-down max-w-[800px] mx-auto">
         <div className="px-8 py-5 flex items-center justify-between shadow-md border-2 border-slate-200 w-full flex-wrap gap-[10px]  rounded-lg">
-          <div className="font-bold text-lg">Adres</div>
+          <div className="font-bold text-lg flex gap-4">
+            <img src={AddressIcon} alt="Phone Icon" className="w-[30px]" />
+            <p>Adres</p>
+          </div>
           <div className="text-right ml-auto">
             ul. gen. Henryka Dąbrowskiego 36, 84-230 Rumia
           </div>
         </div>
 
         <div className="px-8 py-5 flex items-center justify-between shadow-md border-2 border-slate-200 w-full rounded-lg">
-          <div className="font-bold text-lg">Telefon</div>
+          <div className="font-bold text-lg flex gap-4">
+            <img src={PhoneIcon} alt="Phone Icon" className="w-[25px]" />
+            <p>Telefon</p>
+          </div>
           <p>+48 530 235 204</p>
         </div>
 
         <div className="px-8 py-5 flex items-center justify-between shadow-md border-2 border-slate-200 w-full rounded-lg">
-          <div className="font-bold text-lg">Email</div>
+          <div className="font-bold text-lg flex gap-4">
+            <img src={EmailIcon} alt="Phone Icon" className="w-[25px]" />
+            <p>Email</p>
+          </div>
           <p>biuro@ladyfinanse.pl</p>
         </div>
 
         <div className="px-8 py-5 flex items-center shadow-md border-2 border-slate-200 w-full flex-col rounded-lg">
-          <div className="font-bold text-lg w-full mb-[10px]">
-            Godziny Otwarcia
+          <div className="font-bold text-lg w-full mb-[10px] flex gap-4">
+            <img src={ScheduleIcon} alt="Phone Icon" className="w-[25px]" />
+            <p>Godziny Otwarcia</p>
           </div>
           <ul className="w-full">
             {Array.from([
@@ -74,7 +89,10 @@ const Contact = () => {
             ]).map((day) => (
               <li key={day} className="flex gap-[40px] justify-between">
                 <div>{day}</div>
-                <div>9:00 - {day === "Środa" || day === "Czwartek" ? "18:00" : "17:00"}</div>
+                <div>
+                  9:00 -{" "}
+                  {day === "Środa" || day === "Czwartek" ? "18:00" : "17:00"}
+                </div>
               </li>
             ))}
             <li className="flex gap-[40px] justify-between">
@@ -90,8 +108,9 @@ const Contact = () => {
       </div>
 
       <div className="flex flex-col mt-[12px] border-2 border-slate-200 shadow-md rounded-lg">
-        <div className="font-bold text-lg w-full mb-[10px] mt-[12px] px-8 py-5">
-          Gdzie się znajdujemy?
+        <div className="font-bold text-lg w-full mb-[10px] mt-[12px] px-8 py-5 flex gap-4">
+          <img src={LocationIcon} alt="Location Icon" className="w-[28px]" />
+          <p>Gdzie się znajdujemy?</p>
         </div>
 
         <iframe
