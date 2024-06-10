@@ -30,7 +30,7 @@ const BlogPage = () => {
           id: post.id,
           ...post.data(),
         }));
-        
+
         // ADDING POSTS
         setPosts(postsData);
       } catch (error) {
@@ -58,7 +58,7 @@ const BlogPage = () => {
     };
 
     setUpCategories(posts);
-  }, [posts])
+  }, [posts]);
 
   // FILTERING BASED ON SELECTED FILTERS
   const handleFilter = () => {
@@ -118,6 +118,11 @@ const BlogPage = () => {
     }
   };
 
+  // DELETING POST
+  const handleDeletePost = (postId) => {
+    setPosts(posts.filter((post) => post.id !== postId));
+  };
+
   const filteredPosts = handleFilter();
   const sortedPosts = handleSort(filteredPosts);
 
@@ -165,7 +170,7 @@ const BlogPage = () => {
       />
 
       {/* POSTS LIST */}
-      <PostsList posts={sortedPosts} />
+      <PostsList posts={sortedPosts} handleDeletePost={handleDeletePost} />
     </Section>
   );
 };

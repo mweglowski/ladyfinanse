@@ -12,9 +12,12 @@ import {
 import Section from "../../UI/Section";
 import CommentModal from "./CommentModal";
 import LikeIcon from "../../../icons/like.svg";
+import UserIcon from "../../../icons/user.svg";
+import { useModal } from "../../../context/modal-context";
 
 const PostPage = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, userDoc } = useAuth();
+  const { toggleVisibility: toggleModalVisibility } = useModal();
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [areCommentsShown, setCommentsDisplay] = useState(false);
@@ -61,6 +64,9 @@ const PostPage = () => {
   const addComment = async (comment) => {
     const newComment = {
       userId: currentUser.uid,
+      firstName: userDoc.firstName,
+      lastName: userDoc.lastName,
+      email: userDoc.email,
       text: comment,
       createdAt: new Date(),
     };
@@ -72,6 +78,45 @@ const PostPage = () => {
       comments: arrayUnion(newComment),
     });
     hideCommentModal();
+  };
+
+  // CONFIRMING COMMENT DELETION
+  const confirmDelete = (comment) => {
+    toggleModalVisibility(
+      <div>
+        <p className="text-center mb-[40px]">
+          Czy na pewno chcesz usunąć ten komentarz?
+        </p>
+
+        <div className="flex justify-between">
+          <button
+            onClick={toggleModalVisibility}
+            className="button-transparent rounded-lg"
+          >
+            Anuluj
+          </button>
+          <button
+            onClick={() => handleDeleteComment(comment)}
+            className="button rounded-lg"
+          >
+            Tak
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  // DELETING COMMENT
+  const handleDeleteComment = async (comment) => {
+    const updatedComments = comments.filter((c) => c !== comment);
+    setComments(updatedComments);
+
+    const docRef = doc(db, "posts", id);
+    await updateDoc(docRef, {
+      comments: arrayRemove(comment),
+    });
+
+    toggleModalVisibility();
   };
 
   // TOGGLE LIKE
@@ -136,6 +181,7 @@ const PostPage = () => {
     return Math.floor(seconds) + " sekund temu";
   };
 
+  // SHOW STH WHILE LOADING
   if (!post) {
     return <div>Loading...</div>;
   }
@@ -221,20 +267,63 @@ const PostPage = () => {
           )}
         </div>
       ) : (
-        <p className="text-gray-500 mt-[30px] mx-auto">Brak komentarzy</p>
+        <div className="relative">
+          <p className="text-gray-500 mt-[30px] mx-auto">Brak komentarzy</p>
+
+          {currentUser ? (
+            <div
+              className="p-1 rounded-lg border-2 border-gray-400 flex w-fit items-center absolute right-0 top-6 hover:border-gray-500 cursor-pointer duration-300 text-gray-400 hover:text-gray-500"
+              onClick={toggleLike}
+            >
+              <img src={LikeIcon} className="w-[27px] " />
+              <p className="ml-2 pl-2 border-l-2 border-gray-400">
+                {userLikesPost ? "Lubisz To!" : "Polub"}
+              </p>
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="p-1 rounded-lg border-2 border-gray-400 flex w-fit items-center absolute right-0 top-6 hover:border-gray-500 cursor-pointer duration-300 text-gray-400 hover:text-gray-500"
+            >
+              <img src={LikeIcon} className="w-[27px] " />
+              <p className="ml-2 pl-2 border-l-2 border-gray-400">Polub</p>
+            </Link>
+          )}
+        </div>
       )}
 
       {/* COMMENTS */}
       {areCommentsShown && (
         <ul className="my-8 max-w-[700px] mx-auto w-full">
           {post.comments.map((comment, index) => (
-            <li key={index}>
+            <li key={index} className="relative">
+              {/* DATE */}
               <div className="text-gray-500">
                 {timeSince(comment.createdAt.toDate())}
               </div>
+
+              {/* USER INFO */}
+              <div className="flex">
+                <img src={UserIcon} alt="User Icon" className="w-[20px]" />
+                <div>
+                  {comment.firstName} {comment.lastName}
+                </div>
+              </div>
+
+              {/* TEXT */}
               <div className="border-b-2 border-gray-100 mb-4">
                 {comment.text}
               </div>
+
+              {/* REMOVE COMMENT BUTTON */}
+              {userDoc && userDoc.role === "admin" && (
+                <button
+                  onClick={() => confirmDelete(comment)}
+                  className="absolute right-0 top-2 text-white rounded-lg bg-black px-2 py-1 hover:bg-white hover:text-black border-2 duration-300"
+                >
+                  Usuń
+                </button>
+              )}
             </li>
           ))}
         </ul>

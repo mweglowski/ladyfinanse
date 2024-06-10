@@ -1,4 +1,7 @@
 import { Route, Routes } from "react-router-dom";
+import { useModal } from "./context/modal-context";
+import { AuthProvider } from "./context/auth-context";
+
 import Navbar from "./components/Navbar";
 import Home from "./components/pages/home/Home";
 import Loans from "./components/pages/loans/Loans";
@@ -10,15 +13,17 @@ import ScrollToTop from "./components/ScrollToTop";
 import Login from "./components/pages/auth/Login";
 import Logout from "./components/pages/auth/Logout";
 import Signup from "./components/pages/auth/Signup";
-import { AuthProvider } from "./context/auth-context";
 import PostPage from "./components/pages/blog/PostPage";
 import NewPostPage from "./components/pages/blog/NewPostPage";
 import RealEstatesPage from "./components/pages/realestates/RealEstatesPage";
+import Modal from "./components/UI/Modal";
 
 function App() {
   return (
     <AuthProvider>
       <div className="min-h-[100vh] flex flex-col justify-between relative">
+        <Modal />
+
         <ScrollToTop />
         <Navbar />
 
