@@ -13,7 +13,7 @@ import Login from "./components/pages/auth/Login";
 import Logout from "./components/pages/auth/Logout";
 import Signup from "./components/pages/auth/Signup";
 import PostPage from "./components/pages/blog/PostPage";
-import NewPostPage from "./components/pages/blog/NewPostPage";
+import ManagePostPage from "./components/pages/blog/ManagePostPage";
 import RealEstatesPage from "./components/pages/realestates/RealEstatesPage";
 import Modal from "./components/UI/Modal";
 
@@ -33,7 +33,8 @@ function App() {
           <Route path="/realestates" element={<RealEstatesPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/post/:id" element={<PostPage />} />
-          <Route path="/blog/post/new" element={<NewPostPage />} />
+          <Route path="/blog/post/new" element={<ManagePostPage />} />
+          <Route path="/blog/post/edit/:id" element={<ManagePostPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />

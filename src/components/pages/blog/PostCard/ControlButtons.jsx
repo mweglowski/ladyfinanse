@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const ControlButtons = ({userDoc, confirmDelete}) => {
+const ControlButtons = ({userDoc, confirmDelete, postId}) => {
 	return (
 		<div>{userDoc && userDoc.role === "admin" && (
 			<div className="absolute top-[-25px] left-0">
@@ -10,9 +11,9 @@ const ControlButtons = ({userDoc, confirmDelete}) => {
 				>
 					Usuń
 				</button>
-				<button className="text-white rounded-lg bg-black px-2 py-1 hover:bg-white hover:text-black border-2 duration-300">
+				<Link to={`/blog/post/edit/${postId}`} className="text-white rounded-lg bg-black px-2 py-1 hover:bg-white hover:text-black border-2 duration-300">
 					Edytuj
-				</button>
+				</Link>
 			</div>
 		)}</div>
 	)

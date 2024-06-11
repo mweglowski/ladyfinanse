@@ -59,7 +59,11 @@ const PostCard = ({ post, onDelete }) => {
       className="p-4 border-2 border-slate-200 flex flex-col relative rounded-lg"
     >
       {/* POST CONTROL BUTTONS */}
-      <ControlButtons confirmDelete={confirmDelete} userDoc={userDoc} />
+      <ControlButtons
+        confirmDelete={confirmDelete}
+        userDoc={userDoc}
+        postId={post.id}
+      />
 
       {/* CATEGORIES */}
       <Categories categories={post.categories} />
