@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import { useModal } from "./context/modal-context";
 import { AuthProvider } from "./context/auth-context";
 
 import Navbar from "./components/Navbar";

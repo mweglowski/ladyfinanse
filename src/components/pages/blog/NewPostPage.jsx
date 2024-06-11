@@ -8,16 +8,32 @@ import NewPostImage from "../../../images/blog/new-post.png";
 import RemoveIcon from "../../../icons/remove.svg";
 
 const NewPostPage = () => {
+  // CURRENT ELEMENTS
   const [postTitle, setPostTitle] = useState("");
   const [sections, setSections] = useState([]);
+
+  // NEW SECTION
   const [newSectionType, setNewSectionType] = useState("title");
   const [newSectionContent, setNewSectionContent] = useState("");
   const [newSectionImage, setNewSectionImage] = useState(null);
+
+  // EDITING SECTION
+  const [isUserEditingSection, setIsUserEditingSection] = useState(false);
+  const [editSectionContent, setEditSectionContent] = useState("");
+  const [editingSectionIndex, setEditingSectionIndex] = useState(null);
+
+  // CATEGORIES
   const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState("");
+
+  // CURRENT HOVERED SECTION
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  // REDIRECTING
   const navigate = useNavigate();
 
+  // SECTIONS
+  // ADD
   const handleAddSection = () => {
     if (newSectionContent === "" && !newSectionImage) return;
 
@@ -25,19 +41,35 @@ const NewPostPage = () => {
       ...sections,
       {
         type: newSectionType,
-        content: newSectionContent,
-        image: newSectionImage,
+        content: newSectionImage ? newSectionImage : newSectionContent,
       },
     ]);
     setNewSectionContent("");
     setNewSectionImage(null);
+    console.log(sections);
   };
 
+  // REMOVE
   const handleRemoveSection = (index) => {
     const updatedSections = sections.filter((_, i) => i !== index);
     setSections(updatedSections);
   };
 
+  // EDIT
+  const handleEditSection = () => {
+    const updatedSections = sections.map((section, i) =>
+      i === editingSectionIndex
+        ? { ...section, content: editSectionContent }
+        : section
+    );
+    setSections(updatedSections);
+    setIsUserEditingSection(false);
+    setEditingSectionIndex(null);
+    setEditSectionContent("");
+  };
+
+  // CATEGORIES
+  // ADD
   const handleAddCategory = () => {
     if (newCategory === "") return;
 
@@ -45,11 +77,34 @@ const NewPostPage = () => {
     setNewCategory("");
   };
 
+  // REMOVE
   const handleRemoveCategory = (index) => {
     const updatedCategories = categories.filter((_, i) => i !== index);
     setCategories(updatedCategories);
   };
 
+  // HANDLING IMAGE UPLOAD
+  const handleImageUpload = (e, setImage) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // ADD BOLD TEXT
+  const handleBoldText = () => {
+    if (isUserEditingSection) {
+      setEditSectionContent(`${editSectionContent} <b></b>`);
+    } else {
+      setNewSectionContent(`${newSectionContent} <b></b>`);
+    }
+  };
+
+  // SUBMIT POST
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -66,25 +121,6 @@ const NewPostPage = () => {
     } catch (error) {
       console.error("Error adding document: ", error);
     }
-  };
-
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setNewSectionImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleBoldText = () => {
-    setNewSectionContent(`${newSectionContent} <b></b>`);
-  };
-
-  const handleAlignText = (alignment) => {
-    setNewSectionContent(`<div style="text-align: ${alignment};">${newSectionContent}</div>`);
   };
 
   return (
@@ -134,24 +170,86 @@ const NewPostPage = () => {
                   <h2 className="text-xl font-semibold">{section.content}</h2>
                 )}
                 {section.type === "text" && (
-                  <div dangerouslySetInnerHTML={{ __html: section.content }} />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: section.content }}
+                    className="text-justify"
+                  />
                 )}
                 {section.type === "image" && (
-                  <img src={section.image} alt="Uploaded" className="max-w-full h-auto" />
+                  <img
+                    src={section.content}
+                    alt="Uploaded"
+                    className="max-w-full h-auto"
+                  />
                 )}
               </div>
               {hoveredIndex === index && (
-                <button
-                  type="button"
-                  onClick={() => handleRemoveSection(index)}
-                  className="ml-4 bg-red-500 text-white p-1 px-2 rounded-lg hover:bg-red-700 transition absolute right-4 duration-300"
-                >
-                  Usuń
-                </button>
+                <div className="absolute right-0 flex gap-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsUserEditingSection(true);
+                      setEditSectionContent(section.content);
+                      setEditingSectionIndex(index);
+                    }}
+                    className="text-white rounded-lg bg-black px-2 py-1 hover:bg-white hover:text-black border-2 duration-300"
+                  >
+                    Edytuj
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveSection(index)}
+                    className="text-white rounded-lg bg-black px-2 py-1 hover:bg-white hover:text-black border-2 duration-300"
+                  >
+                    Usuń
+                  </button>
+                </div>
               )}
             </div>
           ))}
         </div>
+
+        {/* EDITING ELEMENT */}
+        {isUserEditingSection && (
+          <div className="flex flex-col">
+            {sections[editingSectionIndex].type === "text" && (
+              <div className="flex gap-2 mx-auto mt-4">
+                <button
+                  type="button"
+                  onClick={handleBoldText}
+                  className="border-2 p-1 px-3 border-black rounded-lg"
+                >
+                  Pogrubienie
+                </button>
+              </div>
+            )}
+
+            {sections[editingSectionIndex].type === "image" ? (
+              <input
+                type="file"
+                onChange={(e) => handleImageUpload(e, setEditSectionContent)}
+                className="input mt-4"
+                accept="image/*"
+              />
+            ) : (
+              <textarea
+                type="text"
+                value={editSectionContent}
+                onChange={(e) => setEditSectionContent(e.target.value)}
+                placeholder="Treść elementu"
+                className="input mt-4 min-h-[100px] max-h-[200px]"
+              />
+            )}
+
+            <button
+              type="button"
+              onClick={handleEditSection}
+              className="p-2 w-[200px] mx-auto button rounded-b-lg"
+            >
+              Zatwierdź Edycję
+            </button>
+          </div>
+        )}
 
         {/* ELEMENT CREATION */}
         <div className="flex flex-col">
@@ -203,34 +301,13 @@ const NewPostPage = () => {
               >
                 Pogrubienie
               </button>
-              <button
-                type="button"
-                onClick={() => handleAlignText("left")}
-                className="border-2 p-1 px-3 border-black rounded-lg"
-              >
-                Lewo
-              </button>
-              <button
-                type="button"
-                onClick={() => handleAlignText("center")}
-                className="border-2 p-1 px-3 border-black rounded-lg"
-              >
-                Centrum
-              </button>
-              <button
-                type="button"
-                onClick={() => handleAlignText("right")}
-                className="border-2 p-1 px-3 border-black rounded-lg"
-              >
-                Prawo
-              </button>
             </div>
           )}
 
           {newSectionType === "image" ? (
             <input
               type="file"
-              onChange={handleImageUpload}
+              onChange={(e) => handleImageUpload(e, setNewSectionImage)}
               className="input mt-4"
               accept="image/*"
             />
