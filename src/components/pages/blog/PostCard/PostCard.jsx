@@ -7,7 +7,7 @@ import ControlButtons from "./ControlButtons";
 import Categories from "./Categories";
 import MainTitle from "./MainTitle";
 import Sections from "./Sections";
-import Date from "./Date";
+import PostDate from "./PostDate";
 import CommentsLikesCountContainer from "./CommentsLikesCountContainer";
 
 const PostCard = ({ post, onDelete }) => {
@@ -75,7 +75,7 @@ const PostCard = ({ post, onDelete }) => {
       <Sections sections={post.sections} />
 
       {/* DATE OF POST CREATION */}
-      <Date createdAt={post.createdAt} />
+      <PostDate createdAt={post.createdAt} />
 
       {/* LINK TO SPECIFIC POST */}
       <Link

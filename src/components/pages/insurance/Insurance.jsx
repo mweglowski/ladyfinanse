@@ -4,6 +4,7 @@ import Section from "../../UI/Section";
 import Description from "../../UI/Description";
 import InsuranceTypeCard from "./InsuranceTypeCard";
 import Slider from "../../UI/Slider";
+import CardList from "../../UI/CardList";
 
 import Link4Logo from "../../../images/insurance/link4.png";
 import GeneraliLogo from "../../../images/insurance/generali.png";
@@ -19,9 +20,9 @@ import UniquaLogo from "../../../images/insurance/uniqua.png";
 import InterRiskLogo from "../../../images/insurance/interrisk.png";
 import WienerLogo from "../../../images/insurance/wiener.png";
 
-import HouseIcon from "../../../icons/house-dark.svg";
-import CarIcon from "../../../icons/car-dark.svg";
-import CompanyIcon from "../../../icons/company-dark.svg";
+import HouseIcon from "../../../icons/house.svg";
+import CarIcon from "../../../icons/car.svg";
+import CompanyIcon from "../../../icons/company.svg";
 import HeartIcon from "../../../icons/heart.svg";
 import PlaneIcon from "../../../icons/plane.svg";
 import SmileIcon from "../../../icons/smile.svg";
@@ -89,11 +90,11 @@ const Insurance = () => {
     PrudentialLogo,
     UniquaLogo,
     WienerLogo,
-    InterRiskLogo
+    InterRiskLogo,
   ];
 
   return (
-    <Section classNames="pt-[50px]">
+    <Section>
       {/* <div className="relative mx-auto">
         <img
           src={InsuranceTypes}
@@ -104,21 +105,25 @@ const Insurance = () => {
           Co możesz z nami ubezpieczyć?
         </Title>
       </div> */}
-      <div className="relative mx-auto mt-[50px]">
-        <Title classNames="text-shadow-white max-w-[350px] sm:text-[60px] sm:left-[10%] md:max-w-[450px] md:top-[75%]">
+      <div className="bg-[#1a1a1a] text-white animate-none">
+        <Title classNames="mt-[150px] sm:text-[60px]">
           Co możesz z nami ubezpieczyć?
         </Title>
+        <CardList
+          data={insuranceTypesData}
+          listClasses={
+            "flex flex-wrap justify-center items-center gap-[60px] mt-[70px] mx-auto p-8 pb-[200px]"
+          }
+          titleClasses={"text-lg"}
+          descriptionClasses={"text-gray-300 text-justify"}
+          iconClasses={
+            "w-[40px] absolute top-[-25px] left-[-20px] bg-[#1a1a1a] p-1 border-2 border-[#695b21] rounded-lg"
+          }
+          cardClasses={
+            "w-full max-w-[700px] md:max-w-[400px] border-2 border-[#695b21] p-4 relative rounded-lg"
+          }
+        />
       </div>
-      <ul className="flex flex-wrap gap-[50px] p-[40px] justify-center items-center mt-[100px] pb-[150px]">
-        {insuranceTypesData.map((insuranceItemData) => (
-          <li
-            key={insuranceItemData.id}
-            className="md:px-[70px] md:max-w-[800px] lg:max-w-[400px] lg:px-0 xl:max-w-[500px]"
-          >
-            <InsuranceTypeCard {...insuranceItemData} />
-          </li>
-        ))}
-      </ul>
 
       {/* <div className="relative mx-auto">
         <img
@@ -130,7 +135,7 @@ const Insurance = () => {
           Współpraca z Towarzystwami Ubezpieczeniowymi
         </Title>
       </div> */}
-      <div className="relative mx-auto">
+      <div className="relative mx-auto mt-[200px]">
         <Title classNames="text-[35px] text-shadow-white sm:text-[60px]">
           Współpraca z Towarzystwami Ubezpieczeniowymi
         </Title>
@@ -160,7 +165,7 @@ const Insurance = () => {
           <ImageCard logo={ProamaLogo} />
         </li>
       </ul> */}
-      <Slider logos={logos} classNames={"max-w-[900px] mx-auto"}/>
+      <Slider logos={logos} classNames={"max-w-[900px] mx-auto"} />
     </Section>
   );
 };

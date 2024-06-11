@@ -1,6 +1,6 @@
 import React from "react";
 
-const Date = ({createdAt}) => {
+const PostDate = ({createdAt}) => {
   return (
     <div className="absolute bottom-2 z-20 text-gray-500">
       {createdAt.toDate().toLocaleString("pl-PL", {
@@ -12,4 +12,4 @@ const Date = ({createdAt}) => {
   );
 };
 
-export default Date;
+export default PostDate;

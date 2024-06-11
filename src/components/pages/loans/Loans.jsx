@@ -23,7 +23,6 @@ import StudentIcon from "../../../icons/student.svg";
 import CompanyIcon from "../../../icons/company.svg";
 
 import ImageCard from "../../UI/ImageCard";
-import LoanCard from "./LoanCard";
 import Title from "../../UI/Title";
 import Description from "../../UI/Description";
 import Section from "../../UI/Section";
@@ -31,6 +30,7 @@ import Section from "../../UI/Section";
 import BankImage from "../../../images/bank.png";
 import RoadToBetterLoanImage from "../../../images/road-to-better-loan.png";
 import Slider from "../../UI/Slider";
+import CardList from "../../UI/CardList";
 
 const Loans = () => {
   const loansData = [
@@ -96,15 +96,22 @@ const Loans = () => {
 
   return (
     <Section>
-      <div className="bg-pattern text-white">
-        <Title classNames="mt-[200px]">O jaki kredyt możesz się starać?</Title>
-        <ul className="flex flex-wrap justify-center items-center gap-[60px] mt-[70px] mx-auto p-8 pb-[200px]">
-          {loansData.map((loanData) => (
-            <li key={loanData.id}>
-              <LoanCard {...loanData} />
-            </li>
-          ))}
-        </ul>
+      <div className="bg-[#1a1a1a] text-white animate-none">
+        <Title classNames="mt-[150px] sm:text-[60px]">O jaki kredyt możesz się starać?</Title>
+        <CardList
+          data={loansData}
+          listClasses={
+            "flex flex-wrap justify-center items-center gap-[60px] mt-[70px] mx-auto p-8 pb-[200px]"
+          }
+          titleClasses={"text-lg"}
+          descriptionClasses={"text-gray-300 text-justify"}
+          iconClasses={
+            "w-[40px] absolute top-[-25px] left-[-20px] bg-[#1a1a1a] p-1 border-2 border-[#695b21] rounded-lg"
+          }
+          cardClasses={
+            "w-full max-w-[700px] md:max-w-[400px] border-2 border-[#695b21] p-4 relative rounded-lg"
+          }
+        />
       </div>
 
       {/* <div className="relative mx-auto mt-[100px]">
@@ -117,21 +124,17 @@ const Loans = () => {
           Droga do lepszego kredytu
         </Title>
       </div> */}
-      <div className="relative mx-auto mt-[100px]">
-        <Title classNames="text-shadow-white max-w-[600px]   sm:text-[60px]">
+      <div className="relative mx-auto mt-[150px]">
+        <Title classNames="text-shadow-white max-w-[600px] sm:text-[60px]">
           Droga do lepszego kredytu
         </Title>
       </div>
-      <Description classNames="mb-[150px]">
-        LadyFinanse <strong>pomaga</strong> klientom w poprawie ich{" "}
-        <strong>wiarygodności kredytowej</strong>. Dzięki naszemu wysoce{" "}
-        <strong>profesjonalnemu</strong> i <strong>metodologicznemu</strong>{" "}
-        podejściu, pomożemy Ci poprawić Twoją sytuację finansową. Ściśle
-        przestrzegamy Zasad <strong>Dobrych Praktyk</strong> opracowanych przez{" "}
-        <strong>Konferencję Przedsiębiorstw Finansowych</strong> w Polsce.
-        Dzięki temu możesz być <strong>spokojny</strong> - jesteś w{" "}
-        <strong>dobrych rękach</strong>. <br />
-        <br />
+      <Description classNames="mt-[50px] text-justify">
+        LadyFinanse pomaga klientom w wyborze najlepszej oferty kredytowej
+        odpowiadającej ich potrzebom. Nasze Ekspertki gwarantują wybór
+        najtańszej formy finansowania w najkrótszym czasie.
+      </Description>
+      <Description classNames="mb-[150px] mt-[20px]">
         <Link
           to="/contact"
           className="underline hover:text-slate-500 duration-300"
@@ -155,53 +158,8 @@ const Loans = () => {
           Współpraca z Bankami
         </Title>
       </div>
-      {/* <Description>
-        Poniżej przedstawiamy banki, z którymi współpracujemy.
-      </Description> */}
 
-      {/* <ul className="flex flex-wrap justify-center items-center mt-[70px] max-w-[800px] mx-auto p-8 pb-[100px] animate-slide-down gap-[25px] sm:gap-[60px]">
-        <li>
-          <ImageCard logo={MBankLogo} />
-        </li>
-        <li>
-          <ImageCard logo={PekaoLogo} />
-        </li>
-        <li>
-          <ImageCard logo={BnpParibasLogo} />
-        </li>
-        <li>
-          <ImageCard logo={PkoBpLogo} />
-        </li>
-        <li>
-          <ImageCard logo={SantanderLogo} />
-        </li>
-        <li className="scale-[0.9]">
-          <ImageCard logo={AliorBankLogo} />
-        </li>
-        <li>
-          <ImageCard logo={WschowaLogo} />
-        </li>
-        <li>
-          <ImageCard logo={BosLogo} />
-        </li>
-        <li>
-          <ImageCard logo={CitiLogo} />
-        </li>
-        <li>
-          <ImageCard logo={IngLogo} />
-        </li>
-        <li className="scale-[1.2]">
-          <ImageCard logo={MilleniumLogo} />
-        </li>
-        <li>
-          <ImageCard logo={VeloLogo} />
-        </li>
-        <li>
-          <ImageCard logo={SBRLogo} />
-        </li>
-      </ul> */}
-
-      <Slider logos={logos} classNames="mb-[200px] max-w-[900px] mx-auto"/>
+      <Slider logos={logos} classNames="mb-[200px] max-w-[900px] mx-auto" />
     </Section>
   );
 };

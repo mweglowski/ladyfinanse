@@ -7,6 +7,7 @@ import EmailIcon from "../../../icons/email.svg";
 import PhoneIcon from "../../../icons/phone.svg";
 import ScheduleIcon from "../../../icons/schedule.svg";
 import LocationIcon from "../../../icons/location.svg";
+import CompanyLogo from "../../../icons/logo.png";
 
 const Contact = () => {
   return (
@@ -22,9 +23,14 @@ const Contact = () => {
           Kontakt
         </Title>
       </div> */}
-      <div className="relative mx-auto">
-        <Title classNames="text-shadow-white sm:text-[60px] mt-[100px]">
-          Kontakt
+      <div className="mb-[50px]">
+        <img
+          src={CompanyLogo}
+          alt="Company Logo"
+          className="mx-auto max-w-[360px] mt-[50px]"
+        />
+        <Title classNames="text-[#e3ce78] w-full italic-title mt-[-80px]">
+          LadyFinanse
         </Title>
       </div>
 

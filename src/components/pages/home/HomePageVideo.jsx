@@ -36,7 +36,7 @@ const HomePageVideo = () => {
         disablePictureInPicture
         disableRemotePlayback
       >
-        <source src="./assets/videos/fast-town.mp4" type="video/mp4" />
+        <source src="./assets/videos/fast-town.mp4" type="video/mp4"/>
         Your browser does not support the video tag.
       </video>
       <div className="video-mask absolute top-0 left-0 w-full h-full"></div>
@@ -45,11 +45,11 @@ const HomePageVideo = () => {
       <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center text-center bg-[#000000aa]">
         <div className="relative w-[370px] h-[370px] top-[160px]">
           <img src={CompanyLogo} alt="Company Logo" className="mb-4" />
-          <Title classNames="absolute bottom-[-15px] text-[#C7AE48] w-full italic-title">
+          <Title classNames="absolute bottom-[-15px] text-[#e3ce78] w-full italic-title">
             LadyFinanse
           </Title>
         </div>
-        <div className="absolute bottom-[140px]">
+        <div className="absolute bottom-[140px] ">
           <CompanyFeatureText text={texts[currentTextIndex]} />
         </div>
       </div>

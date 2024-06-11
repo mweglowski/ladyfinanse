@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useAuth } from "../../../context/auth-context";
-import { db } from "../../../firebaseConfig";
+import { useAuth } from "../../../../context/auth-context";
+import { db } from "../../../../firebaseConfig";
 import {
   doc,
   getDoc,
@@ -9,11 +9,16 @@ import {
   updateDoc,
   arrayRemove,
 } from "firebase/firestore";
-import Section from "../../UI/Section";
+import Section from "../../../UI/Section";
 import CommentModal from "./CommentModal";
-import LikeIcon from "../../../icons/like.svg";
-import UserIcon from "../../../icons/user.svg";
-import { useModal } from "../../../context/modal-context";
+import LikeIcon from "../../../../icons/like.svg";
+import UserIcon from "../../../../icons/user.svg";
+import { useModal } from "../../../../context/modal-context";
+import PostDate from "./PostDate";
+import Categories from "../PostCard/Categories";
+import MainTitle from "./MainTitle";
+import Sections from "./Sections";
+import ControlButtons from "./ControlButtons";
 
 const PostPage = () => {
   const { currentUser, userDoc } = useAuth();
@@ -48,11 +53,13 @@ const PostPage = () => {
       }
 
       // SET USER LIKES POST STATE, CHECK WHETHER USER LIKES POST ALREADY
-      const userLikeObject = await getUserLikeObject(docRef, currentUser.uid);
-      if (userLikeObject) {
-        setUserLikesPost(true);
-      } else {
-        setUserLikesPost(false);
+      if (currentUser) {
+        const userLikeObject = await getUserLikeObject(docRef, currentUser.uid);
+        if (userLikeObject) {
+          setUserLikesPost(true);
+        } else {
+          setUserLikesPost(false);
+        }
       }
     };
 
@@ -191,49 +198,17 @@ const PostPage = () => {
       {/* POST TITLE WITH DATE AND CATEGORIES */}
       <div className="mx-auto w-full">
         {/* DATE */}
-        <p className="mt-[70px] text-gray-500">
-          Post z dnia{" "}
-          {post.createdAt.toDate().toLocaleString("pl-PL", {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-          })}
-        </p>
+        <PostDate createdAt={post.createdAt} />
 
         {/* CATEGORIES */}
-        <ul className="flex gap-2 flex-wrap my-[10px]">
-          {post.categories.map((category) => (
-            <li
-              key={category}
-              className="bg-white border-2 border-gray-200 text-gray-400 rounded-lg px-2"
-            >
-              {category}
-            </li>
-          ))}
-        </ul>
+        <Categories categories={post.categories} />
 
         {/* TITLE */}
-        <div className="text-left text-5xl mt-[20px] text-shadow-white">
-          {post.postTitle}
-        </div>
+        <MainTitle text={post.postTitle} />
       </div>
 
       {/* POST SECTIONS */}
-      <div className="mx-auto max-w-[700px] mt-[70px] w-full">
-        {post.sections.map((section, index) => (
-          <div key={index} className="mb-4 flex items-center justify-between">
-            <div>
-              {section.type === "title" && (
-                <h1 className="text-2xl font-bold">{section.content}</h1>
-              )}
-              {section.type === "subtitle" && (
-                <h2 className="text-xl font-semibold">{section.content}</h2>
-              )}
-              {section.type === "text" && <p>{section.content}</p>}
-            </div>
-          </div>
-        ))}
-      </div>
+      <Sections sections={post.sections} />
 
       {/* EXPAND COMMENTS */}
       {post.comments.length > 0 ? (
@@ -330,27 +305,10 @@ const PostPage = () => {
       )}
 
       {/* CONTROL BUTTONS */}
-      <div className="flex justify-between mb-[70px] mt-[30px]">
-        {/* GO BACK BUTTON */}
-        <Link to="/blog" className="button-transparent rounded-lg">
-          Powrót
-        </Link>
-
-        {/* ADD COMMENT BUTTON */}
-        {currentUser ? (
-          <button className="button rounded-lg" onClick={showCommentModal}>
-            Skomentuj
-          </button>
-        ) : (
-          <Link
-            to="/login"
-            className="button rounded-lg"
-            onClick={showCommentModal}
-          >
-            Skomentuj
-          </Link>
-        )}
-      </div>
+      <ControlButtons
+        showCommentModal={showCommentModal}
+        isUserLoggedIn={Boolean(currentUser)}
+      />
 
       {/* COMMENT MODAL */}
       {isCommentModalShown && (

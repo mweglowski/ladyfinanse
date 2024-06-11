@@ -12,7 +12,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Login from "./components/pages/auth/Login";
 import Logout from "./components/pages/auth/Logout";
 import Signup from "./components/pages/auth/Signup";
-import PostPage from "./components/pages/blog/PostPage";
+import PostPage from "./components/pages/blog/PostPage/PostPage";
 import ManagePostPage from "./components/pages/blog/ManagePostPage";
 import RealEstatesPage from "./components/pages/realestates/RealEstatesPage";
 import Modal from "./components/UI/Modal";
