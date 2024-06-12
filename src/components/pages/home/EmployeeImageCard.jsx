@@ -1,14 +1,15 @@
 import React from "react";
-import SamplePersonPhoto from "../../../images/sample-person.png";
 
-const EmployeeImageCard = ({ name }) => {
+const EmployeeImageCard = ({ name, imgSrc }) => {
   return (
     <div className="relative">
-      <img
-        src={SamplePersonPhoto}
-        alt="Employee Image"
-        className="w-[270px] h-[270px] rounded-lg"
-      />
+      <div className="w-[290px] h-[360px] flex justify-center items-center rounded-lg overflow-hidden employee-image-shadow-inset">
+        <img
+          src={imgSrc}
+          alt="Employee Image"
+          className="rounded-lg"
+        />
+      </div>
 
       <div className="absolute bg-white rounded-lg p-1 bottom-[-12px] left-[-12px] shadow-md">
         <p className="p-1">{name}</p>

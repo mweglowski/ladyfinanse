@@ -112,7 +112,7 @@ const Insurance = () => {
         <CardList
           data={insuranceTypesData}
           listClasses={
-            "flex flex-wrap justify-center items-center gap-[60px] mt-[70px] mx-auto p-8 pb-[200px]"
+            "flex flex-wrap justify-center items-center gap-[60px] mt-[70px] mx-auto p-8 pb-[200px] max-w-[1000px]"
           }
           titleClasses={"text-lg"}
           descriptionClasses={"text-gray-300 text-justify"}

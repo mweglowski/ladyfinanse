@@ -1,6 +1,10 @@
 import React from "react";
 import HomePageVideo from "./HomePageVideo";
 import EmployeeImageCard from "./EmployeeImageCard";
+import DorotaPhoto from "../../../images/employees/dorota.jpg";
+import NataliaPhoto from "../../../images/employees/natalia.jpg";
+import AgnieszkaPhoto from "../../../images/employees/agnieszka.jpg";
+
 import Title from "../../UI/Title";
 import Description from "../../UI/Description";
 import CompanyLogo from "../../../icons/logo.png";
@@ -24,12 +28,25 @@ function Home() {
 
       {/* EMPLOYEES IMAGES */}
       <Title classNames={"mt-[150px] text-shadow-white"}>LadyTeam</Title>
-      <div className="flex flex-wrap justify-center gap-[20px] p-8">
-        <EmployeeImageCard name={"Dorota Szczepańska"} />
-        <EmployeeImageCard name={"Natalia Zasadzińska"} />
-        <EmployeeImageCard name={"Julia Waśkiewicz"} />
-        <EmployeeImageCard name={"Agnieszka Kalkowska"} />
-        <EmployeeImageCard name={"Paulina Majerkiewicz"} />
+      <div className="flex flex-wrap justify-center p-8 gap-[20px]">
+        <EmployeeImageCard name={"Dorota Szczepańska"} imgSrc={DorotaPhoto} />
+
+        <div className="flex flex-wrap justify-center gap-[20px]">
+          <EmployeeImageCard
+            name={"Natalia Zasadzińska"}
+            imgSrc={NataliaPhoto}
+          />
+          <EmployeeImageCard name={"Julia Waśkiewicz"} imgSrc={""} />
+
+          <EmployeeImageCard
+            name={"Agnieszka Kalkowska"}
+            imgSrc={AgnieszkaPhoto}
+          />
+          <EmployeeImageCard
+            name={"Paulina Majerkiewicz"}
+            imgSrc={""}
+          />
+        </div>
       </div>
 
       {/* ADDITIONAL INFO SECTION */}
