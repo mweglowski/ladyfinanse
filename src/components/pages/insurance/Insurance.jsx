@@ -106,7 +106,7 @@ const Insurance = () => {
         </Title>
       </div> */}
       <div className="bg-[#1a1a1a] text-white animate-none">
-        <Title classNames="mt-[150px] sm:text-[60px]">
+        <Title classNames="mt-[150px] sm:text-[60px] text-shadow-white">
           Co możesz z nami ubezpieczyć?
         </Title>
         <CardList

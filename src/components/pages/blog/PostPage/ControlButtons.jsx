@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ControlButtons = ({ isUserLoggedIn, showCommentModal }) => {
   return (
-    <div className="flex justify-between mb-[70px] mt-[30px]">
+    <div className="flex sm:justify-between mb-[70px] mt-[30px] max-w-[850px] w-full mx-auto flex-wrap justify-center gap-[20px] sm:gap-0">
       {/* GO BACK BUTTON */}
       <Link to="/blog" className="button-transparent rounded-lg px-4 py-2">
         Powrót
@@ -29,7 +29,6 @@ const ControlButtons = ({ isUserLoggedIn, showCommentModal }) => {
           <Link
             to="/login"
             className="button rounded-lg px-4 py-2"
-            onClick={showCommentModal}
           >
             Skomentuj
           </Link>

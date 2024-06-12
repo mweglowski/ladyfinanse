@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed bg-[#1a1a1aee] w-full p-2 z-50 shadow-md shadow-black">
+    <div className="fixed bg-[#ffffffee] w-full p-2 border-b-2 z-50">
       <button onClick={toggleLinksDisplay}  className="md:hidden flex ml-auto">
         <img
           src={ExpandDownIcon}

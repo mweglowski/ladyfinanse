@@ -22,16 +22,26 @@ export default function Logout() {
   }
 
   return (
-    <Section classNames="h-screen text-white bg-[#1a1a1a]">
-      <Title classNames="text-shadow-white max-w-[650px] sm:text-[60px] text-[50px] mt-[150px]">
-        Czy na pewno chcesz się wylogować?
-      </Title>
+    <Section classNames="animate-slide-down p-8">
+      <div className="relative mx-auto">
+        <img
+          src={LogoutImage}
+          alt="Blog Image"
+          className="mt-[50px] max-w-[550px] w-full"
+        />
+        <Title classNames="absolute top-[60%] sm:left-[30%] text-shadow-white max-w-[350px] sm:text-[60px] text-[50px] md:top-[30%] md:left-[60%]">
+          Czy na pewno chcesz się wylogować?
+        </Title>
+      </div>
 
       <form
         onSubmit={handleLogout}
-        className="flex max-w-[400px] mx-auto w-full mb-[100px] justify-evenly mt-[70px]"
+        className="flex max-w-[400px] mx-auto w-full mb-[100px] justify-evenly"
       >
-        <Link to="/" className="button-transparent rounded-lg px-4 py-2">
+        <Link
+          to="/"
+          className="button-transparent rounded-lg px-4 py-2"
+        >
           Powrót
         </Link>
 

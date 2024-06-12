@@ -1,12 +1,12 @@
 import React from "react";
 
-const Categories = ({ categories }) => {
+const Categories = ({ categories, classNames }) => {
   return (
-    <ul className="flex gap-2 flex-wrap mb-[10px]">
+    <ul className={"flex gap-2 flex-wrap mb-[10px] " + classNames}>
       {categories.map((category) => (
         <li
           key={category}
-          className="bg-white border-2 border-gray-300 text-gray-400 rounded-lg px-2"
+          className="border-2 border-gray-500 text-gray-400 rounded-lg px-2"
         >
           {category}
         </li>

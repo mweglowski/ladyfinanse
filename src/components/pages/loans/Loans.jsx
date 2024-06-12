@@ -97,7 +97,7 @@ const Loans = () => {
   return (
     <Section>
       <div className="bg-[#1a1a1a] text-white animate-none">
-        <Title classNames="mt-[150px] sm:text-[60px]">O jaki kredyt możesz się starać?</Title>
+        <Title classNames="mt-[150px] sm:text-[60px] text-shadow-white">O jaki kredyt możesz się starać?</Title>
         <CardList
           data={loansData}
           listClasses={

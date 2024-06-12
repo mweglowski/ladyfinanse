@@ -44,7 +44,7 @@ function App() {
         <div className="fixed bottom-0 left-0 z-50 flex gap-[10px]">
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSdLZNN0iXmXa1f7jYmj1f_s6nK2VQl_NkKrtxMM57RbSV8kCA/viewform"
-            className="rounded-tr-lg py-2 px-3 button shadow-none hover:bg-white"
+            className="rounded-tr-lg py-2 px-4 button shadow-none hover:bg-white"
             target="_blank"
           >
             Formularz kontaktowy

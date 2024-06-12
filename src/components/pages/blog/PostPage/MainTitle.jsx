@@ -2,7 +2,7 @@ import React from "react";
 
 const MainTitle = ({ text }) => {
   return (
-    <div className="text-left text-5xl mt-[20px] text-shadow-white">{text}</div>
+    <div className="text-left text-4xl md:text-5xl mt-[20px] text-shadow-white">{text}</div>
   );
 };
 

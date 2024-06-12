@@ -11,11 +11,22 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Radio Canada Big";
-  /* font-family: "Glass Antiqua"; */
   animation: slide-down 600ms ease-in-out;
 }
 
 /* GLOBAL REUSABLE ANIMATIONS AND CLASSES */
+input, select, option, textarea {
+	@apply rounded-lg border-2 border-gray-600 py-1 px-2 min-w-[150px] outline-none hover:border-gray-200 focus:border-gray-200 duration-300 h-[40px] text-gray-400 cursor-pointer hover:text-gray-200 focus:text-gray-200 bg-transparent;
+}
+
+option {
+	@apply text-gray-400;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	filter: invert(0.7);
+}
+
 .italic-title {
   font-family: "Parisienne";
 }
@@ -57,8 +68,11 @@
 }
 
 /* NAVBAR */
-.nav-link {
+/* .nav-link {
   @apply py-2 px-4 min-w-[80px]  text-gray-700 m-1 border-2 border-transparent hover:border-[#C7AE48] hover:text-[#a08c39] duration-300 cursor-pointer animate-slide-down text-center rounded-lg;
+} */
+.nav-link {
+  @apply py-2 px-4 min-w-[80px]  text-white m-1 border-2 border-transparent hover:border-[#695b21] hover:text-[#cfb448] duration-300 cursor-pointer animate-slide-down text-center rounded-lg;
 }
 
 /* HOME PAGE */
@@ -140,9 +154,11 @@ video {
 } */
 
 /* LOGIN */
-.input {
+.auth-input {
   @apply bg-gray-100 p-2 border-2 border-gray-300 rounded-lg duration-300 hover:border-gray-400 focus:border-gray-400 outline-none text-gray-600;
 }
+
+
 
 /* BLOG */
 /* .shadow-inset-white {
@@ -185,8 +201,12 @@ video {
   pointer-events: none;
 }
 
+/* .text-shadow-white { */
+  /* text-shadow: 0 0 20px white, 0 0 3px black; */
+  /* background-color: rgba(255, 255, 255, 0.372); */
+/* } */
 .text-shadow-white {
-  text-shadow: 0 0 20px white, 0 0 3px black;
+  text-shadow: 0 0 4px white, 0 0 3px black;
   /* background-color: rgba(255, 255, 255, 0.372); */
 }
 

@@ -30,7 +30,7 @@ const RealEstatesPage = () => {
   }, []);
 
   return (
-    <Section classNames="p-4">
+    <Section classNames="bg-[#1a1a1a] text-white p-4">
       {/* TITLE WITH IMAGE */}
       {/* <div className="relative mx-auto">
         <img

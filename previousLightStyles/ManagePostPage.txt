@@ -121,10 +121,13 @@ const ManagePostPage = ({ postId }) => {
   };
 
   return (
-    <Section classNames="text-white bg-[#1a1a1a]">
-      <Title classNames="text-shadow-white max-w-[500px] text-[42px] sm:text-[54px] mt-[150px]">
-        {postId || id ? "Co zamierzasz zmienić?" : "Co dzisiaj chciałabyś opisać?"}
-      </Title>
+    <Section>
+      <div className="relative mx-auto">
+        <img src={NewPostImage} alt="Blog Image" className="mt-[50px]" />
+        <Title classNames="absolute top-[60%] left-[30%] text-shadow-white max-w-[350px] text-[42px] sm:text-[54px] sm:left-[40%]">
+          {postId || id ? "Edytuj Post" : "Co dzisiaj chciałabyś opisać?"}
+        </Title>
+      </div>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col mt-[70px] p-4 max-w-[700px] mx-auto w-full mb-[100px] relative gap-4"
@@ -196,7 +199,6 @@ const ManagePostPage = ({ postId }) => {
             </div>
           ))}
         </div>
-
         {isUserEditingSection && (
           <div className="flex flex-col">
             {sections[editingSectionIndex].type === "text" && (
@@ -235,42 +237,36 @@ const ManagePostPage = ({ postId }) => {
             </button>
           </div>
         )}
-
         <div className="flex flex-col">
-          <p className="mx-auto text-gray-400 mt-[20px]">
-            Wybierz typ elementu.
-          </p>
-
+          <p className="mx-auto text-gray-400 mt-[20px]">Wybierz typ elementu.</p>
           <div className="flex gap-2 mx-auto mt-[15px]">
             <button
               type="button"
-              className={`border-2 p-1 px-3 border-gray-600 rounded-lg duration-300 text-gray-400 ${
+              className={`border-2 p-1 px-3 border-black rounded-lg duration-300 ${
                 newSectionType === "subtitle"
-                  ? "border-transparent bg-black text-white"
+                  ? "bg-black text-[#C7AE48] border-[#C7AE48]"
                   : ""
               }`}
               onClick={() => setNewSectionType("subtitle")}
             >
               Podtytuł
             </button>
-
             <button
               type="button"
-              className={`border-2 p-1 px-3 border-gray-600 rounded-lg duration-300 text-gray-400 ${
+              className={`border-2 p-1 px-3 border-black rounded-lg ${
                 newSectionType === "text"
-                  ? "border-transparent bg-black text-white"
+                  ? "bg-black text-[#C7AE48] border-[#C7AE48]"
                   : ""
               }`}
               onClick={() => setNewSectionType("text")}
             >
               Tekst
             </button>
-
             <button
               type="button"
-              className={`border-2 p-1 px-3 border-gray-600 rounded-lg duration-300 text-gray-400 ${
+              className={`border-2 p-1 px-3 border-black rounded-lg ${
                 newSectionType === "image"
-                  ? "border-transparent bg-black text-white"
+                  ? "bg-black text-[#C7AE48] border-[#C7AE48]"
                   : ""
               }`}
               onClick={() => setNewSectionType("image")}
@@ -278,19 +274,17 @@ const ManagePostPage = ({ postId }) => {
               Zdjęcie
             </button>
           </div>
-
           {newSectionType === "text" && (
             <div className="flex gap-2 mx-auto mt-4">
               <button
                 type="button"
                 onClick={handleBoldText}
-                className="border-2 p-1 px-3 border-gray-600 rounded-lg text-gray-400 active:border-transparent active:text-white active:bg-black duration-300"
+                className="border-2 p-1 px-3 border-black rounded-lg"
               >
                 Pogrubienie
               </button>
             </div>
           )}
-
           {newSectionType === "image" ? (
             <input
               type="file"
@@ -307,25 +301,22 @@ const ManagePostPage = ({ postId }) => {
               className="input mt-4 min-h-[100px] max-h-[200px]"
             />
           )}
-
           <button
             type="button"
             onClick={handleAddSection}
-            className="px-4 py-2 mx-auto button rounded-b-lg"
+            className="p-2 w-[200px] mx-auto button rounded-b-lg"
           >
             Dodaj Element
           </button>
         </div>
-
-        {/* CATEGORIES */}
         <div className="mt-4 flex flex-col">
           <div className="flex flex-wrap gap-2 mb-2">
             {categories.map((category, index) => (
               <div
                 key={index}
-                className="flex items-center border-2 border-gray-600 rounded-lg"
+                className="flex items-center border-2 border-gray-300 rounded-lg"
               >
-                <span className="bg-gray-700 p-2 rounded-l-md rounded-r-md text-gray-200">
+                <span className="bg-gray-200 p-2 rounded-l-md rounded-r-md">
                   {category}
                 </span>
                 <button
@@ -333,11 +324,7 @@ const ManagePostPage = ({ postId }) => {
                   className="text-white p-1 rounded-lg"
                   onClick={() => handleRemoveCategory(index)}
                 >
-                  <img
-                    src={RemoveIcon}
-                    alt="Remove Icon"
-                    className="w-[25px]"
-                  />
+                  <img src={RemoveIcon} alt="Remove Icon" className="w-[25px]" />
                 </button>
               </div>
             ))}
@@ -352,16 +339,16 @@ const ManagePostPage = ({ postId }) => {
           <button
             type="button"
             onClick={handleAddCategory}
-            className="mx-auto button rounded-b-lg px-4 py-2"
+            className="w-[200px] mx-auto button rounded-b-lg"
           >
             Dodaj Kategorię
           </button>
         </div>
         <div className="flex mt-[50px] justify-evenly">
-          <Link to="/blog" className="button-transparent rounded-lg px-4 py-2">
+          <Link to="/blog" className="button-transparent rounded-lg">
             Powrót
           </Link>
-          <button type="submit" className="button rounded-lg px-4 py-2">
+          <button type="submit" className="button rounded-lg">
             {postId || id ? "Zaktualizuj Post" : "Utwórz Post"}
           </button>
         </div>

@@ -31,17 +31,10 @@ export default function Login() {
   }
 
   return (
-    <Section classNames="animate-slide-down p-8">
-      <div className="relative mx-auto">
-        <img
-          src={AuthImage}
-          alt="Blog Image"
-          className="mt-[50px] max-w-[700px] w-full"
-        />
-        <Title classNames="absolute top-[50%] left-[30%] text-shadow-white max-w-[350px] sm:text-[70px] text-[50px]">
-          Zaloguj się
-        </Title>
-      </div>
+    <Section classNames="bg-[#1a1a1a] h-screen text-white">
+      <Title classNames="text-shadow-white sm:text-[70px] text-[50px] mt-[150px]">
+        Zaloguj się
+      </Title>
 
       {/* ERROR BOX */}
       <div className="mx-auto text-red-400 h-[30px]">
@@ -77,7 +70,7 @@ export default function Login() {
 
       <div className="flex gap-[10px] mx-auto mt-[30px] mb-[140px]">
         <p>Nie posiadasz jeszcze konta?</p>
-        <Link to="/signup" className="text-slate-800 underline">
+        <Link to="/signup" className="underline">
           Stwórz konto
         </Link>
       </div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const ContactDescription = ({classNames, children}) => {
 	return (
-		<div className={"text-[#c0ab57] " + classNames}>{children}</div>
+		<div className={"text-gray-300 " + classNames}>{children}</div>
 	)
 }
 

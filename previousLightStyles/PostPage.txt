@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../../../context/auth-context";
 import { db } from "../../../../firebaseConfig";
@@ -10,6 +10,7 @@ import {
   arrayRemove,
 } from "firebase/firestore";
 import Section from "../../../UI/Section";
+import CommentModal from "./CommentModal";
 import LikeIcon from "../../../../icons/like.svg";
 import UserIcon from "../../../../icons/user.svg";
 import { useModal } from "../../../../context/modal-context";
@@ -25,9 +26,22 @@ const PostPage = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [areCommentsShown, setCommentsDisplay] = useState(false);
+  const [isCommentModalShown, setCommentModalDisplay] = useState(false);
   const [comments, setComments] = useState([]);
   const [userLikesPost, setUserLikesPost] = useState(false);
-  const textareaRef = useRef();
+
+  // CHANGING COMMENTS DISPLAY
+  const toggleCommentsDisplay = () => {
+    setCommentsDisplay((prevDisplay) => !prevDisplay);
+  };
+
+  // TOGGLING COMMENT MODAL DISPLAY
+  const showCommentModal = () => {
+    setCommentModalDisplay(true);
+  };
+  const hideCommentModal = () => {
+    setCommentModalDisplay(false);
+  };
 
   // FETCHING POST
   useEffect(() => {
@@ -53,61 +67,14 @@ const PostPage = () => {
     // WHEN COMMENTS QUANTITY IS CHANGING RE-RENDER COMPONENT
   }, [id, comments]);
 
-  // CHANGING COMMENTS DISPLAY
-  const toggleCommentsDisplay = () => {
-    setCommentsDisplay((prevDisplay) => !prevDisplay);
-  };
-
-  // TOGGLING COMMENT MODAL DISPLAY
-  const showCommentModal = () => {
-    toggleModalVisibility(
-      // MODAL CONTAINER BOX
-      <div>
-        {/* TITLE */}
-        <div className="text-center text-xl font-bold mb-[10px] w-full px-[70px]">
-          Nowy komentarz
-        </div>
-
-        {/* COMMENT TEXT */}
-        <textarea
-          ref={textareaRef}
-          className="input mx-auto w-full min-h-[100px] max-h-[200px]"
-          placeholder="Skomentuj..."
-        />
-
-        {/* CONTROL BUTTONS */}
-        <div className="flex justify-between mt-[30px] w-full mx-auto">
-          <button
-            className="button-transparent rounded-lg px-5 py-2"
-            onClick={toggleModalVisibility}
-          >
-            Anuluj
-          </button>
-
-          <button
-            type="submit"
-            className="button rounded-lg px-5 py-2"
-            onClick={addComment}
-          >
-            Skomentuj
-          </button>
-        </div>
-      </div>
-    );
-  };
-
   // ADDING COMMENT
-  const addComment = async () => {
-    if (textareaRef.current.value === "") {
-      return;
-    }
-
+  const addComment = async (comment) => {
     const newComment = {
       userId: currentUser.uid,
       firstName: userDoc.firstName,
       lastName: userDoc.lastName,
       email: userDoc.email,
-      text: textareaRef.current.value,
+      text: comment,
       createdAt: new Date(),
     };
     const updatedComments = [...comments, newComment];
@@ -117,8 +84,7 @@ const PostPage = () => {
     await updateDoc(docRef, {
       comments: arrayUnion(newComment),
     });
-
-    toggleModalVisibility();
+    hideCommentModal();
   };
 
   // CONFIRMING COMMENT DELETION
@@ -132,13 +98,13 @@ const PostPage = () => {
         <div className="flex justify-between">
           <button
             onClick={toggleModalVisibility}
-            className="button-transparent rounded-lg px-4 py-2"
+            className="button-transparent rounded-lg"
           >
             Anuluj
           </button>
           <button
             onClick={() => handleDeleteComment(comment)}
-            className="button rounded-lg px-6 py-2"
+            className="button rounded-lg"
           >
             Tak
           </button>
@@ -228,14 +194,14 @@ const PostPage = () => {
   }
 
   return (
-    <Section classNames="p-8 mx-auto w-full bg-[#1a1a1a] text-white">
+    <Section classNames="p-8 max-w-[900px] mx-auto w-full">
       {/* POST TITLE WITH DATE AND CATEGORIES */}
-      <div className="mx-auto w-full max-w-[800px]">
+      <div className="mx-auto w-full">
         {/* DATE */}
         <PostDate createdAt={post.createdAt} />
 
         {/* CATEGORIES */}
-        <Categories categories={post.categories} classNames="mt-[20px]" />
+        <Categories categories={post.categories} />
 
         {/* TITLE */}
         <MainTitle text={post.postTitle} />
@@ -246,7 +212,7 @@ const PostPage = () => {
 
       {/* EXPAND COMMENTS */}
       {post.comments.length > 0 ? (
-        <div className="relative max-w-[800px] w-full mx-auto">
+        <div className="relative">
           <button
             className="mt-[30px] text-gray-500 hover:underline duration-300 hover:text-gray-700"
             onClick={toggleCommentsDisplay}
@@ -276,7 +242,7 @@ const PostPage = () => {
           )}
         </div>
       ) : (
-        <div className="relative max-w-[800px] w-full mx-auto">
+        <div className="relative">
           <p className="text-gray-500 mt-[30px] mx-auto">Brak komentarzy</p>
 
           {currentUser ? (
@@ -303,7 +269,7 @@ const PostPage = () => {
 
       {/* COMMENTS */}
       {areCommentsShown && (
-        <ul className="my-8 max-w-[800px] mx-auto w-full">
+        <ul className="my-8 max-w-[700px] mx-auto w-full">
           {post.comments.map((comment, index) => (
             <li key={index} className="relative">
               {/* DATE */}
@@ -314,13 +280,13 @@ const PostPage = () => {
               {/* USER INFO */}
               <div className="flex">
                 <img src={UserIcon} alt="User Icon" className="w-[20px]" />
-                <div className="text-gray-400">
+                <div>
                   {comment.firstName} {comment.lastName}
                 </div>
               </div>
 
               {/* TEXT */}
-              <div className="border-b-2 border-gray-600 mb-4 text-gray-200">
+              <div className="border-b-2 border-gray-100 mb-4">
                 {comment.text}
               </div>
 
@@ -328,7 +294,7 @@ const PostPage = () => {
               {userDoc && userDoc.role === "admin" && (
                 <button
                   onClick={() => confirmDelete(comment)}
-                  className="absolute right-0 top-6 text-white rounded-lg bg-black px-2 py-1 hover:bg-white hover:text-black duration-300"
+                  className="absolute right-0 top-2 text-white rounded-lg bg-black px-2 py-1 hover:bg-white hover:text-black border-2 duration-300"
                 >
                   Usuń
                 </button>
@@ -343,6 +309,14 @@ const PostPage = () => {
         showCommentModal={showCommentModal}
         isUserLoggedIn={Boolean(currentUser)}
       />
+
+      {/* COMMENT MODAL */}
+      {isCommentModalShown && (
+        <CommentModal
+          onHideModal={hideCommentModal}
+          onAddComment={addComment}
+        />
+      )}
     </Section>
   );
 };

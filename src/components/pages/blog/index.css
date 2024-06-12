@@ -6,14 +6,3 @@ option {
 	@apply text-gray-500;
 } */
 
-input, select, option {
-	@apply rounded-lg border-2 border-gray-600 py-1 px-2 min-w-[150px] outline-none hover:border-gray-200 focus:border-gray-200 duration-300 h-[40px] text-gray-400 cursor-pointer hover:text-gray-200 focus:text-gray-200 bg-transparent;
-}
-
-option {
-	@apply text-gray-400;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-	filter: invert(0.7);
-}

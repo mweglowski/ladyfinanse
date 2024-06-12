@@ -127,7 +127,7 @@ const BlogPage = () => {
   const sortedPosts = handleSort(filteredPosts);
 
   return (
-    <Section classNames="mb-[100px] p-4 bg-[#1a1a1a]">
+    <Section classNames="pb-[100px] p-4 bg-[#1a1a1a]">
       {/* IMAGE WITH TITLE */}
       {/* <div className="relative mx-auto">
         <img
@@ -141,7 +141,7 @@ const BlogPage = () => {
         </Title>
       </div> */}
       <div className="relative mx-auto">
-        <Title classNames="text-white sm:text-[60px] mt-[100px]">
+        <Title classNames="text-white sm:text-[60px] mt-[100px] text-shadow-white">
           Witaj na naszym blogu!
         </Title>
       </div>
