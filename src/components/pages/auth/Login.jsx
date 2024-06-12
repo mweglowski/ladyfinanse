@@ -69,7 +69,7 @@ export default function Login() {
         <button
           disabled={loading}
           type="submit"
-          className="button w-fit rounded-lg mx-auto"
+          className="button rounded-lg mx-auto px-5 py-2"
         >
           Zaloguj
         </button>

@@ -34,7 +34,7 @@ const CommentModal = ({ onHideModal, onAddComment }) => {
         {/* CONTROL BUTTONS */}
         <div className="flex justify-between mt-[30px] w-full mx-auto">
           <button
-            className="button-transparent rounded-lg"
+            className="button-transparent rounded-lg px-5 py-2"
             onClick={onHideModal}
           >
             Anuluj
@@ -42,7 +42,7 @@ const CommentModal = ({ onHideModal, onAddComment }) => {
 
           <button
             type="submit"
-            className="button rounded-lg"
+            className="button rounded-lg px-5 py-2"
           >
             Skomentuj
           </button>

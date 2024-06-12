@@ -2,16 +2,19 @@ import React from "react";
 import Title from "../../UI/Title";
 import Section from "../../UI/Section";
 import ContactImage from "../../../images/contact.png";
-import AddressIcon from "../../../icons/address.svg";
-import EmailIcon from "../../../icons/email.svg";
-import PhoneIcon from "../../../icons/phone.svg";
-import ScheduleIcon from "../../../icons/schedule.svg";
-import LocationIcon from "../../../icons/location.svg";
+import AddressIcon from "../../../icons/contact/address.svg";
+import EmailIcon from "../../../icons/contact/email.svg";
+import PhoneIcon from "../../../icons/contact/phone.svg";
+import ScheduleIcon from "../../../icons/contact/schedule.svg";
+import LocationIcon from "../../../icons/contact/location.svg";
 import CompanyLogo from "../../../icons/logo.png";
+import CardTitle from "./CardTitle";
+import ContactCard from "./ContactCard";
+import ContactDescription from "./ContactDescription";
 
 const Contact = () => {
   return (
-    <Section classNames={"p-8"}>
+    <Section classNames={"p-4 bg-[#1a1a1a] text-[#e3ce78]"}>
       {/* IMAGE WITH TITLE */}
       {/* <div className="relative mx-auto">
         <img
@@ -44,7 +47,7 @@ const Contact = () => {
           f
         </a>
         <a
-          className="button rounded-lg cursor-pointer"
+          className="button rounded-lg cursor-pointer hover:bg-white"
           href="https://docs.google.com/forms/d/e/1FAIpQLSdLZNN0iXmXa1f7jYmj1f_s6nK2VQl_NkKrtxMM57RbSV8kCA/viewform"
           target="_blank"
         >
@@ -53,70 +56,73 @@ const Contact = () => {
       </div>
 
       <div className="flex justify-center flex-wrap items-center gap-3 animate-slide-down max-w-[800px] mx-auto">
-        <div className="px-8 py-5 flex items-center justify-between shadow-md border-2 border-slate-200 w-full flex-wrap gap-[10px]  rounded-lg">
+        <ContactCard cardClasses="gap-[10px]">
           <div className="font-bold text-lg flex gap-4">
             <img src={AddressIcon} alt="Phone Icon" className="w-[30px]" />
-            <p>Adres</p>
+            <CardTitle>Adres</CardTitle>
           </div>
-          <div className="text-right ml-auto">
+          <ContactDescription classNames="text-right ml-auto text-[#e3ce78]">
             ul. gen. Henryka Dąbrowskiego 36, 84-230 Rumia
-          </div>
-        </div>
+          </ContactDescription>
+        </ContactCard>
 
-        <div className="px-8 py-5 flex items-center justify-between shadow-md border-2 border-slate-200 w-full rounded-lg">
+        <ContactCard>
           <div className="font-bold text-lg flex gap-4">
             <img src={PhoneIcon} alt="Phone Icon" className="w-[25px]" />
-            <p>Telefon</p>
+            <CardTitle>Telefon</CardTitle>
           </div>
-          <p>+48 530 235 204</p>
-        </div>
+          <ContactDescription>+48 530 235 204</ContactDescription>
+        </ContactCard>
 
-        <div className="px-8 py-5 flex items-center justify-between shadow-md border-2 border-slate-200 w-full rounded-lg">
+        <ContactCard>
           <div className="font-bold text-lg flex gap-4">
             <img src={EmailIcon} alt="Phone Icon" className="w-[25px]" />
-            <p>Email</p>
+            <CardTitle>Email</CardTitle>
           </div>
-          <p>biuro@ladyfinanse.pl</p>
-        </div>
+          <ContactDescription>biuro@ladyfinanse.pl</ContactDescription>
+        </ContactCard>
 
-        <div className="px-8 py-5 flex items-center shadow-md border-2 border-slate-200 w-full flex-col rounded-lg">
+        <ContactCard classNames="flex-col">
           <div className="font-bold text-lg w-full mb-[10px] flex gap-4">
             <img src={ScheduleIcon} alt="Phone Icon" className="w-[25px]" />
-            <p>Godziny Otwarcia</p>
+            <CardTitle>Godziny Otwarcia</CardTitle>
           </div>
-          <ul className="w-full">
-            {Array.from([
-              "Poniedziałek",
-              "Wtorek",
-              "Środa",
-              "Czwartek",
-              "Piątek",
-              "Sobota",
-            ]).map((day) => (
-              <li key={day} className="flex gap-[40px] justify-between">
-                <div>{day}</div>
-                <div>
-                  9:00 -{" "}
-                  {day === "Środa" || day === "Czwartek" ? "18:00" : "17:00"}
-                </div>
+
+          <ContactDescription classNames="w-full">
+            <ul>
+              {Array.from([
+                "Poniedziałek",
+                "Wtorek",
+                "Środa",
+                "Czwartek",
+                "Piątek",
+                "Sobota",
+              ]).map((day) => (
+                <li key={day} className="flex gap-[40px] justify-between">
+                  <div>{day}</div>
+                  <div>
+                    9:00 -{" "}
+                    {day === "Środa" || day === "Czwartek" ? "18:00" : "17:00"}
+                  </div>
+                </li>
+              ))}
+              <li className="flex gap-[40px] justify-between">
+                <div>Sobota</div>
+                <div>Nieczynne</div>
               </li>
-            ))}
-            <li className="flex gap-[40px] justify-between">
-              <div>Sobota</div>
-              <div>Nieczynne</div>
-            </li>
-            <li className="flex gap-[40px] justify-between">
-              <div>Niedziela</div>
-              <div>Nieczynne</div>
-            </li>
-          </ul>
-        </div>
+              <li className="flex gap-[40px] justify-between">
+                <div>Niedziela</div>
+                <div>Nieczynne</div>
+              </li>
+            </ul>
+          </ContactDescription>
+        </ContactCard>
       </div>
 
-      <div className="flex flex-col mt-[12px] border-2 border-slate-200 shadow-md rounded-lg">
+      <div className="flex flex-col mt-[12px] border-2 border-none shadow-md rounded-lg">
         <div className="font-bold text-lg w-full mb-[10px] mt-[12px] px-8 py-5 flex gap-4">
           <img src={LocationIcon} alt="Location Icon" className="w-[28px]" />
-          <p>Gdzie się znajdujemy?</p>
+          <CardTitle>Gdzie się znajdujemy?</CardTitle>
         </div>
 
         <iframe

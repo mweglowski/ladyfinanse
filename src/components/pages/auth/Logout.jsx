@@ -36,11 +36,11 @@ export default function Logout() {
 
       <form
         onSubmit={handleLogout}
-        className="flex max-w-[400px] mx-auto w-full mt-[100px] mb-[100px] justify-evenly"
+        className="flex max-w-[400px] mx-auto w-full mb-[100px] justify-evenly"
       >
         <Link
           to="/"
-          className="button-transparent rounded-lg max-w-[100px] w-full"
+          className="button-transparent rounded-lg px-4 py-2"
         >
           Powrót
         </Link>
@@ -48,7 +48,7 @@ export default function Logout() {
         <button
           disabled={loading}
           type="submit"
-          className="button rounded-lg max-w-[100px] w-full"
+          className="button rounded-lg px-7 py-2"
         >
           Tak
         </button>

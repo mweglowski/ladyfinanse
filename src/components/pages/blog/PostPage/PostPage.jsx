@@ -15,7 +15,7 @@ import LikeIcon from "../../../../icons/like.svg";
 import UserIcon from "../../../../icons/user.svg";
 import { useModal } from "../../../../context/modal-context";
 import PostDate from "./PostDate";
-import Categories from "../PostCard/Categories";
+import Categories from "./Categories";
 import MainTitle from "./MainTitle";
 import Sections from "./Sections";
 import ControlButtons from "./ControlButtons";

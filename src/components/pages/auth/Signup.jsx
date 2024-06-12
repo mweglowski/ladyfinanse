@@ -87,12 +87,12 @@ export default function Signup() {
           ref={passwordRef}
           required
           placeholder="Hasło"
-          className="input"
+          className="input text-slate-500 hover:text-slate-400"
         />
         <button
           disabled={loading}
           type="submit"
-          className="button w-fit rounded-lg mx-auto"
+          className="button rounded-lg mx-auto px-5 py-2"
         >
           Stwórz
         </button>

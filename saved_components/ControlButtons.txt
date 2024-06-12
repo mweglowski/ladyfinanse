@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 const ControlButtons = ({userDoc, confirmDelete, postId}) => {
 	return (
 		<div>{userDoc && userDoc.role === "admin" && (
-			<div className="absolute top-[-25px] left-0 gap-1 flex">
+			<div className="absolute top-[-25px] left-0">
 				<button
 					onClick={confirmDelete}
-					className="button rounded-lg px-3 py-1"
+					className="text-white rounded-lg bg-black px-2 py-1 hover:bg-white hover:text-black border-2 duration-300"
 				>
 					Usuń
 				</button>
-				<Link to={`/blog/post/edit/${postId}`} className="button px-3 py-1 rounded-lg">
+				<Link to={`/blog/post/edit/${postId}`} className="text-white rounded-lg bg-black px-2 py-1 hover:bg-white hover:text-black border-2 duration-300">
 					Edytuj
 				</Link>
 			</div>

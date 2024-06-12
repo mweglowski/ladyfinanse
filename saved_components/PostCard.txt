@@ -56,7 +56,7 @@ const PostCard = ({ post, onDelete }) => {
   return (
     <div
       key={post.id}
-      className="p-4 border-2 border-[#695b21] flex flex-col relative rounded-lg"
+      className="p-4 border-2 border-slate-200 flex flex-col relative rounded-lg"
     >
       {/* POST CONTROL BUTTONS */}
       <ControlButtons
@@ -80,7 +80,7 @@ const PostCard = ({ post, onDelete }) => {
       {/* LINK TO SPECIFIC POST */}
       <Link
         to={`/blog/post/${post.id}`}
-        className="button absolute bottom-2 right-2 z-20 rounded-lg hover:bg-white px-6 py-2"
+        className="button absolute bottom-2 right-2 z-20 rounded-lg"
       >
         Więcej
       </Link>

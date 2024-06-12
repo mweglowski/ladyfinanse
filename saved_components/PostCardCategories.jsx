@@ -6,7 +6,7 @@ const Categories = ({ categories }) => {
       {categories.map((category) => (
         <li
           key={category}
-          className="border-2 border-gray-600 text-gray-400 rounded-lg px-2"
+          className="bg-white border-2 border-gray-200 text-gray-400 rounded-lg px-2"
         >
           {category}
         </li>

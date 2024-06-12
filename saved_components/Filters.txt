@@ -12,8 +12,8 @@ const Filters = ({
   endDate,
 }) => {
   return (
-    <div className="mt-[100px] p-2 mb-4 max-w-[1000px] w-full mx-auto text-white">
-      <div className="font-bold text-lg border-b-2 mb-2 border-[#695b21]">
+    <div className="mt-[100px] p-2 rounded-lg border-2 border-slate-200 mb-4 max-w-[1000px] w-full mx-auto">
+      <div className="font-bold text-lg border-b-2 border-slate-200 mb-2">
         Filtry
       </div>
 
