@@ -147,7 +147,7 @@ const BlogPage = () => {
       </div>
 
       {/* NEW POST BUTTON ONLY AVAILABLE FOR ADMIN */}
-      {userDoc && (
+      {(userDoc && userDoc.role === "admin") && (
         <Link
           to="/blog/post/new"
           className="button rounded-lg mx-auto mt-[20px] px-6 py-2"
