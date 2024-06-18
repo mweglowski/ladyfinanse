@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../context/auth-context";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
-import BlogImage from "../../../images/blog/blog.png";
 import Title from "../../UI/Title";
 import { Link } from "react-router-dom";
 import Section from "../../UI/Section";
-import "./index.css";
 import PostsList from "./PostsList";
 import Filters from "./Filters";
 
@@ -128,18 +126,6 @@ const BlogPage = () => {
 
   return (
     <Section classNames="pb-[100px] p-4 bg-[#1a1a1a]">
-      {/* IMAGE WITH TITLE */}
-      {/* <div className="relative mx-auto">
-        <img
-          src={BlogImage}
-          alt="Blog Image"
-          className="mt-[50px] max-w-[700px] w-full"
-          loading="lazy"
-        />
-        <Title classNames="absolute top-[50%] text-shadow-white max-w-[350px] sm:text-[60px]">
-          Witaj na naszym blogu!
-        </Title>
-      </div> */}
       <div className="relative mx-auto">
         <Title classNames="text-white sm:text-[60px] mt-[100px] text-shadow-white">
           Witaj na naszym blogu!

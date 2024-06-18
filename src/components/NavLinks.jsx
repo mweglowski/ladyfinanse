@@ -15,7 +15,7 @@ const NavLinks = ({ onDisplayChange }) => {
         Ubezpieczenia
       </Link>
 
-      <Link to="/realestates" className="nav-link" onClick={onDisplayChange}>
+      <Link to="/estates" className="nav-link" onClick={onDisplayChange}>
         Nieruchomości
       </Link>
 

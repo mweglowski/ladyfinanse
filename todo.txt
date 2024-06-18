@@ -1,8 +1,9 @@
 CURRENT
+	realestates route and realestates/new and realestates/edit/:id
 
 LATER
-realestates route
-place images - landing page
-change video
+	place images - landing page
+	change video
+	remove unnecessary images from ./images folder
 
 COLOR = #C7AE48

@@ -4,7 +4,6 @@ import { db } from "../../../firebaseConfig";
 import { addDoc, updateDoc, doc, getDoc, collection } from "firebase/firestore";
 import Section from "../../UI/Section";
 import Title from "../../UI/Title";
-import NewPostImage from "../../../images/blog/new-post.png";
 import RemoveIcon from "../../../icons/remove.svg";
 
 const ManagePostPage = ({ postId }) => {

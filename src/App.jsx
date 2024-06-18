@@ -14,8 +14,9 @@ import Logout from "./components/pages/auth/Logout";
 import Signup from "./components/pages/auth/Signup";
 import PostPage from "./components/pages/blog/PostPage/PostPage";
 import ManagePostPage from "./components/pages/blog/ManagePostPage";
-import RealEstatesPage from "./components/pages/realestates/RealEstatesPage";
+import EstatesPage from "./components/pages/estates/EstatesPage";
 import Modal from "./components/UI/Modal";
+import ManageEstatePage from "./components/pages/estates/ManageEstatePage";
 
 function App() {
   return (
@@ -30,7 +31,9 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/loans" element={<Loans />} />
           <Route path="/insurance" element={<Insurance />} />
-          <Route path="/realestates" element={<RealEstatesPage />} />
+          <Route path="/estates" element={<EstatesPage />} />
+          <Route path="/estates/new" element={<ManageEstatePage />} />
+          <Route path="/estates/edit/:id" element={<ManageEstatePage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/post/:id" element={<PostPage />} />
           <Route path="/blog/post/new" element={<ManagePostPage />} />
