@@ -3,7 +3,7 @@ import React from "react";
 const EmployeeImageCard = ({ name, imgSrc }) => {
   return (
     <div className="relative">
-      <div className="w-[290px] h-[360px] flex justify-center items-center rounded-lg overflow-hidden employee-image-shadow-inset">
+      <div className="w-[290px] h-[360px] flex justify-center items-center rounded-lg overflow-hidden employee-image-shadow-inset border-2 border-[#e4d69e]">
         <img
           src={imgSrc}
           alt="Employee Image"

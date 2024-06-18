@@ -17,7 +17,7 @@ function Home() {
 
       {/* GENERAL INFO ABOUT LADY TEAM */}
       <Title classNames={"mt-[150px] text-shadow-white"}>Poznajcie nas!</Title>
-      <Description classNames={"text-justify mt-[50px]"}>
+      <Description classNames={"text-justify mt-[50px"}>
         Jesteśmy zespołem doświadczonych Ekspertek, które od lat działają w tych
         branżach. Postanowiłyśmy połączyć nasze siły, aby stworzyć Nową Markę,
         która zapewni Wam rzetelne informacje oraz fachowe porady. Oferujemy

@@ -50,14 +50,14 @@ export default function Login() {
           ref={emailRef}
           required
           placeholder="Email"
-          className="input"
+          className="input mx-8"
         />
         <input
           type="password"
           ref={passwordRef}
           required
           placeholder="Hasło"
-          className="input"
+          className="input mx-8"
         />
         <button
           disabled={loading}

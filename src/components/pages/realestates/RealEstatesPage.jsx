@@ -9,7 +9,6 @@ const RealEstatesPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Use your deployed backend URL
         const response = await fetch(`https://webscraper-api.vercel.app`);
         const message = await response.json();
         setData(message.data);
