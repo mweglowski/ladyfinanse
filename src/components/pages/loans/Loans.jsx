@@ -97,7 +97,9 @@ const Loans = () => {
   return (
     <Section>
       <div className="bg-[#1a1a1a] text-white animate-none">
-        <Title classNames="mt-[150px] sm:text-[60px] text-shadow-white">O jaki kredyt możesz się starać?</Title>
+        <Title classNames="mt-[150px] sm:text-[60px] text-shadow-white">
+          O jaki kredyt możesz się starać?
+        </Title>
         <CardList
           data={loansData}
           listClasses={
@@ -124,42 +126,44 @@ const Loans = () => {
           Droga do lepszego kredytu
         </Title>
       </div> */}
-      <div className="relative mx-auto mt-[150px]">
-        <Title classNames="text-shadow-white max-w-[600px] sm:text-[60px]">
-          Droga do lepszego kredytu
-        </Title>
-      </div>
-      <Description classNames="mt-[50px] text-justify">
-        LadyFinanse pomaga klientom w wyborze najlepszej oferty kredytowej
-        odpowiadającej ich potrzebom. Nasze Ekspertki gwarantują wybór
-        najtańszej formy finansowania w najkrótszym czasie.
-      </Description>
-      <Description classNames="mb-[150px] mt-[20px]">
-        <Link
-          to="/contact"
-          className="underline hover:text-slate-500 duration-300"
-        >
-          Skontaktuj się
-        </Link>{" "}
-        z nami, aby dowiedzieć się więcej.
-      </Description>
+      <div className="bg-white z-10">
+        <div className="relative mx-auto mt-[150px]">
+          <Title classNames="text-shadow-white max-w-[600px] sm:text-[60px]">
+            Droga do lepszego kredytu
+          </Title>
+        </div>
+        <Description classNames="mt-[50px] text-justify">
+          LadyFinanse pomaga klientom w wyborze najlepszej oferty kredytowej
+          odpowiadającej ich potrzebom. Nasze Ekspertki gwarantują wybór
+          najtańszej formy finansowania w najkrótszym czasie.
+        </Description>
+        <Description classNames="mb-[150px] mt-[20px]">
+          <Link
+            to="/contact"
+            className="underline hover:text-slate-500 duration-300"
+          >
+            Skontaktuj się
+          </Link>{" "}
+          z nami, aby dowiedzieć się więcej.
+        </Description>
 
-      {/* IMAGE WITH TITLE */}
-      <div className="relative mx-auto">
-        {/* <img
+        {/* IMAGE WITH TITLE */}
+        <div className="relative mx-auto">
+          {/* <img
           src={BankImage}
           alt="Blog Image"
           className="mt-[100px] max-w-[800px] w-full"
         /> */}
-        {/* <Title classNames="absolute top-[50%] left-[30%] text-shadow-white max-w-[350px] sm:text-[60px]">
+          {/* <Title classNames="absolute top-[50%] left-[30%] text-shadow-white max-w-[350px] sm:text-[60px]">
           Współpraca z Bankami
         </Title> */}
-        <Title classNames="text-shadow-white max-w-[700px] sm:text-[60px] mt-[100px]">
-          Współpraca z Bankami
-        </Title>
-      </div>
+          <Title classNames="text-shadow-white max-w-[700px] sm:text-[60px] mt-[100px]">
+            Współpraca z Bankami
+          </Title>
+        </div>
 
-      <Slider logos={logos} classNames="mb-[200px] max-w-[900px] mx-auto" />
+        <Slider logos={logos} classNames="mb-[200px] max-w-[900px] mx-auto" />
+      </div>
     </Section>
   );
 };

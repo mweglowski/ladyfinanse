@@ -1,8 +1,6 @@
 import React from "react";
 import Title from "../../UI/Title";
 import Section from "../../UI/Section";
-import Description from "../../UI/Description";
-import InsuranceTypeCard from "./InsuranceTypeCard";
 import Slider from "../../UI/Slider";
 import CardList from "../../UI/CardList";
 
@@ -26,10 +24,6 @@ import CompanyIcon from "../../../icons/company.svg";
 import HeartIcon from "../../../icons/heart.svg";
 import PlaneIcon from "../../../icons/plane.svg";
 import SmileIcon from "../../../icons/smile.svg";
-import ImageCard from "../../UI/ImageCard";
-
-import InsuranceCompanies from "../../../images/insurance-companies.png";
-import InsuranceTypes from "../../../images/insurance2.png";
 
 const Insurance = () => {
   const insuranceTypesData = [
@@ -125,47 +119,14 @@ const Insurance = () => {
         />
       </div>
 
-      {/* <div className="relative mx-auto">
-        <img
-          src={InsuranceCompanies}
-          alt="Blog Image"
-          className="mt-[50px] max-w-[550px] w-full mx-auto"
-        />
-        <Title classNames="absolute top-[65%] left-[5%] text-[45px] text-shadow-white max-w-[350px] sm:text-[60px] sm:max-w-[450px] sm:top-[70%]">
-          Współpraca z Towarzystwami Ubezpieczeniowymi
-        </Title>
-      </div> */}
-      <div className="relative mx-auto mt-[200px]">
-        <Title classNames="text-[35px] text-shadow-white sm:text-[60px]">
-          Współpraca z Towarzystwami Ubezpieczeniowymi
-        </Title>
+      <div className="bg-white z-10">
+        <div className="relative mx-auto mt-[200px]">
+          <Title classNames="text-[35px] text-shadow-white sm:text-[60px]">
+            Współpraca z Towarzystwami Ubezpieczeniowymi
+          </Title>
+        </div>
+        <Slider logos={logos} classNames={"max-w-[900px] mx-auto"} />
       </div>
-
-      {/* <Description classNames="mt-[100px] mb-[70px]">
-        Poniżej przedstawiamy listę Towarzystw Ubezpieczeniowych, z którymi
-        współpracujemy.
-      </Description> */}
-      {/* <ul className="flex flex-wrap p-[50px] gap-[80px] justify-center items-center max-w-[1250px] mx-auto animate-slide-down mb-[100px]">
-        <li>
-          <ImageCard logo={Link4Logo} />
-        </li>
-        <li>
-          <ImageCard logo={GeneraliLogo} imgClasses="scale-[1.5]" />
-        </li>
-        <li>
-          <ImageCard logo={PZULogo} imgClasses="w-[100px]" />
-        </li>
-        <li>
-          <ImageCard logo={ErgoHestiaLogo} />
-        </li>
-        <li>
-          <ImageCard logo={WartaLogo} />
-        </li>
-        <li>
-          <ImageCard logo={ProamaLogo} />
-        </li>
-      </ul> */}
-      <Slider logos={logos} classNames={"max-w-[900px] mx-auto"} />
     </Section>
   );
 };

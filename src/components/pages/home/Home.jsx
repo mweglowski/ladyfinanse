@@ -11,7 +11,7 @@ import CompanyLogo from "../../../icons/logo.png";
 
 function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-white">
       {/* LANDING PAGE VIDEO */}
       <HomePageVideo />
 
@@ -31,21 +31,21 @@ function Home() {
       <div className="flex flex-wrap justify-center p-8 gap-[20px]">
         <EmployeeImageCard name={"Dorota Szczepańska"} imgSrc={DorotaPhoto} />
 
-        <div className="flex flex-wrap justify-center gap-[20px]">
-          <EmployeeImageCard
-            name={"Natalia Zasadzińska"}
-            imgSrc={NataliaPhoto}
-          />
-          <EmployeeImageCard name={"Julia Waśkiewicz"} imgSrc={""} />
-
-          <EmployeeImageCard
-            name={"Agnieszka Kalkowska"}
-            imgSrc={AgnieszkaPhoto}
-          />
-          <EmployeeImageCard
-            name={"Paulina Majerkiewicz"}
-            imgSrc={""}
-          />
+        <div className="flex flex-wrap gap-[20px] justify-center">
+          <div className="flex flex-wrap justify-center gap-[20px]">
+            <EmployeeImageCard
+              name={"Natalia Zasadzińska"}
+              imgSrc={NataliaPhoto}
+            />
+            <EmployeeImageCard name={"Julia Waśkiewicz"} imgSrc={""} />
+          </div>
+          <div className="flex flex-wrap justify-center gap-[20px]">
+            <EmployeeImageCard
+              name={"Agnieszka Kalkowska"}
+              imgSrc={AgnieszkaPhoto}
+            />
+            <EmployeeImageCard name={"Paulina Majerkiewicz"} imgSrc={""} />
+          </div>
         </div>
       </div>
 

@@ -20,7 +20,7 @@ import Modal from "./components/UI/Modal";
 function App() {
   return (
     <AuthProvider>
-      <div className="min-h-[100vh] flex flex-col justify-between relative">
+      <div className="min-h-[100vh] flex flex-col justify-between relative bg-[#1a1a1a]">
         <Modal />
 
         <ScrollToTop />
