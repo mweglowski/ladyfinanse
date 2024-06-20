@@ -1,7 +1,6 @@
 import React from "react";
 import Title from "../../UI/Title";
 import Section from "../../UI/Section";
-import ContactImage from "../../../images/contact.png";
 import AddressIcon from "../../../icons/contact/address.svg";
 import EmailIcon from "../../../icons/contact/email.svg";
 import PhoneIcon from "../../../icons/contact/phone.svg";
@@ -15,17 +14,6 @@ import ContactDescription from "./ContactDescription";
 const Contact = () => {
   return (
     <Section classNames={"p-4 bg-[#1a1a1a] text-[#e3ce78]"}>
-      {/* IMAGE WITH TITLE */}
-      {/* <div className="relative mx-auto">
-        <img
-          src={ContactImage}
-          alt="Blog Image"
-          className="mt-[50px] max-w-[800px] w-full"
-        />
-        <Title classNames="absolute top-[50%] left-[35%] text-shadow-white max-w-[350px] sm:text-[60px]">
-          Kontakt
-        </Title>
-      </div> */}
       <div className="mb-[50px]">
         <img
           src={CompanyLogo}
@@ -96,7 +84,6 @@ const Contact = () => {
                 "Środa",
                 "Czwartek",
                 "Piątek",
-                "Sobota",
               ]).map((day) => (
                 <li key={day} className="flex gap-[40px] justify-between">
                   <div>{day}</div>
