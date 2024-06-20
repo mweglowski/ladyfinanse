@@ -6,6 +6,8 @@ import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
 import { useAuth } from "../../../context/auth-context";
 import { Link } from "react-router-dom";
+import EstateCardList from "./EstateCardList";
+import { useModal } from "../../../context/modal-context";
 
 const EstatesPage = () => {
   const { userDoc } = useAuth();
@@ -16,7 +18,7 @@ const EstatesPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "realestates"));
+        const querySnapshot = await getDocs(collection(db, "estates"));
 
         const estatesData = querySnapshot.docs.map((estate) => ({
           id: estate.id,
@@ -34,6 +36,10 @@ const EstatesPage = () => {
     fetchData();
   }, []);
 
+  const handleDeleteEstate = (esateId) => {
+    setEstates(estates.filter((estate) => estate.id !== esateId));
+  };
+
   return (
     <Section classNames="bg-[#1a1a1a] text-white p-4">
       {/* TITLE */}
@@ -45,25 +51,25 @@ const EstatesPage = () => {
 
       {/* CREATE NEW ESTATE BUTTON */}
       {userDoc && userDoc.role === "admin" && (
-        <Link to="/estates/new" className="button w-fit mx-auto px-5 py-2 rounded-lg mb-[50px]">Dodaj Ogłoszenie</Link>
+        <Link
+          to="/estates/new"
+          className="button w-fit mx-auto px-5 py-2 rounded-lg mb-[50px]"
+        >
+          Dodaj Ogłoszenie
+        </Link>
       )}
 
       {/* ESTATES */}
       {loading ? (
-        "Loading..."
-      ) : estates.length === 0 ? (
-        "No data available"
-      ) : (
-        <div className="flex flex-wrap justify-center gap-4 max-w-[1000px] mx-auto">
-          {estates.map((estate) => (
-            <EstateCard
-              key={estate.id}
-              imageSrc={estate.image}
-              title={estate.title}
-              link={estate.link}
-            />
-          ))}
+        <div className="animate-pulse text-xl text-center mx-auto">
+          Jeszcze chwilę...
         </div>
+      ) : estates.length === 0 ? (
+        <div className="animate-pulse text-xl text-center mx-auto">
+          Na tą chwilę mamy brak ogłoszeń.
+        </div>
+      ) : (
+        <EstateCardList estates={estates} onDelete={handleDeleteEstate} />
       )}
     </Section>
   );

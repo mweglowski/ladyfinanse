@@ -6,4 +6,4 @@ LATER
 	change video
 	remove unnecessary images from ./images folder
 
-COLOR = #C7AE48
+COLOR = #695b21

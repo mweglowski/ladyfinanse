@@ -4,7 +4,6 @@ import { db } from "../../../firebaseConfig";
 import { addDoc, updateDoc, doc, getDoc, collection } from "firebase/firestore";
 import Section from "../../UI/Section";
 import Title from "../../UI/Title";
-import RemoveIcon from "../../../icons/remove.svg";
 
 const ManageEstatePage = ({ estateId }) => {
   const [estateTitle, setEstateTitle] = useState("");
@@ -68,6 +67,7 @@ const ManageEstatePage = ({ estateId }) => {
       <Title classNames="text-shadow-white max-w-[500px] text-[42px] sm:text-[54px] mt-[150px]">
         {estateId || id ? "Edytuj Nieruchomość" : "Dodaj Nową Nieruchomość"}
       </Title>
+      
       <form
         onSubmit={handleSubmit}
         className="flex flex-col mt-[70px] p-4 max-w-[700px] mx-auto w-full mb-[100px] relative gap-4"

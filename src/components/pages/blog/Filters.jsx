@@ -24,7 +24,7 @@ const Filters = ({
             value={category}
             onChange={(e) => onCategoryChange(e.target.value)}
           >
-            <option value="">All</option>
+            <option value="">Wszystkie</option>
 
             {categories.map((category) => (
               <option value={category} key={category}>

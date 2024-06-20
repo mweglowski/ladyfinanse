@@ -22,13 +22,9 @@ import CarIcon from "../../../icons/car.svg";
 import StudentIcon from "../../../icons/student.svg";
 import CompanyIcon from "../../../icons/company.svg";
 
-import ImageCard from "../../UI/ImageCard";
 import Title from "../../UI/Title";
 import Description from "../../UI/Description";
 import Section from "../../UI/Section";
-
-import BankImage from "../../../images/bank.png";
-import RoadToBetterLoanImage from "../../../images/road-to-better-loan.png";
 import Slider from "../../UI/Slider";
 import CardList from "../../UI/CardList";
 
@@ -116,16 +112,6 @@ const Loans = () => {
         />
       </div>
 
-      {/* <div className="relative mx-auto mt-[100px]">
-        <img
-          src={RoadToBetterLoanImage}
-          alt="Blog Image"
-          className="mt-[50px] max-w-[700px] w-full"
-        />
-        <Title classNames="absolute top-[50%] left-[30%] text-shadow-white max-w-[350px] sm:text-[60px]">
-          Droga do lepszego kredytu
-        </Title>
-      </div> */}
       <div className="bg-white z-10">
         <div className="relative mx-auto mt-[150px]">
           <Title classNames="text-shadow-white max-w-[600px] sm:text-[60px]">
@@ -149,14 +135,6 @@ const Loans = () => {
 
         {/* IMAGE WITH TITLE */}
         <div className="relative mx-auto">
-          {/* <img
-          src={BankImage}
-          alt="Blog Image"
-          className="mt-[100px] max-w-[800px] w-full"
-        /> */}
-          {/* <Title classNames="absolute top-[50%] left-[30%] text-shadow-white max-w-[350px] sm:text-[60px]">
-          Współpraca z Bankami
-        </Title> */}
           <Title classNames="text-shadow-white max-w-[700px] sm:text-[60px] mt-[100px]">
             Współpraca z Bankami
           </Title>

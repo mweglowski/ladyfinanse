@@ -25,13 +25,13 @@ const PostCard = ({ post, onDelete }) => {
         <div className="flex justify-between">
           <button
             onClick={toggleVisibility}
-            className="button-transparent rounded-lg"
+            className="button-transparent rounded-lg px-5 py-2"
           >
             Anuluj
           </button>
           <button
             onClick={() => handleDelete(post.id)}
-            className="button rounded-lg"
+            className="button rounded-lg px-5 py-2"
           >
             Tak
           </button>
