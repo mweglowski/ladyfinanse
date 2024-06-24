@@ -44,7 +44,6 @@ function Home() {
               name={"Agnieszka Kalkowska"}
               imgSrc={AgnieszkaPhoto}
             />
-            <EmployeeImageCard name={"Paulina Majerkiewicz"} imgSrc={""} />
           </div>
         </div>
       </div>
